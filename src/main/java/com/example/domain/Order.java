@@ -145,11 +145,11 @@ public class Order {
 		this.user = user;
 	}
 
-	public List<orderItem> getOrderItemList() {
+	public List<OrderItem> getOrderItemList() {
 		return orderItemList;
 	}
 
-	public void setOrderItemList(List<orderItem> orderItemList) {
+	public void setOrderItemList(List<OrderItem> orderItemList) {
 		this.orderItemList = orderItemList;
 	}
 
