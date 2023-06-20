@@ -39,7 +39,7 @@ public class Order {
 	/** ユーザ */
 	private User user;
 	/** 注文商品リスト */
-	private List<orderItem> orderItemList;
+	private List<OrderItem> orderItemList;
 
 	public Integer getId() {
 		return id;
