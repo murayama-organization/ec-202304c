@@ -1,0 +1,15 @@
+name: checkstyle # ワークフロー名
+on: pull_request # ワークフローを開始するイベント名
+jobs: # ワークフローで実行されるジョブ群
+ checkstyle: # ジョブID
+   name: runner / checkstyle # ジョブ名
+   runs-on: ubuntu-latest # ジョブが実行されるマシンの種類
+   steps: # ジョブで実行されるステップ群
+     - name: Checkout
+       uses: actions/checkout@v3 # ソースコード取得(チェックアウト)
+     - name: Checkstyle
+       uses: dbelyaev/action-checkstyle@v0.7.4 # CheckStyle実行
+       with:
+         github_token: ${{ secrets.MY_GITHUB_TOKEN }} #GitHub登録済の認証トークンを設定
+         reporter: github-pr-review # 規約違反時にプルリクの結果画面に出力
+         level: warning # 警告レベルを表示させる
