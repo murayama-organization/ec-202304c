@@ -31,13 +31,14 @@ public class ShowItemListService {
 		return itemList;
 
 	}
+
 	/**
 	 * 商品情報から名前であいまい検索し、取得します.(引数もしくは検索結果が存在しない場合はnullを返します.)
 	 * 
 	 * @param name 名前
 	 * @return 商品情報一覧
 	 */
-	public List<Item> searchByName(String name){
+	public List<Item> searchByName(String name) {
 		if (name == null) {
 			List<Item> itemList = itemRepository.findAll();
 			return itemList;

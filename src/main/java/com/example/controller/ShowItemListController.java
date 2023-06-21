@@ -38,6 +38,9 @@ public class ShowItemListController {
 			itemList = showItemListService.showItemList();
 			model.addAttribute("message", "該当する商品がありません");
 		}
+		if (itemList.size() == 0) {
+			model.addAttribute("message", "商品は1件も存在しません");
+		}
 		model.addAttribute("itemList", itemList);
 		return "ec/item_list";
 	}
