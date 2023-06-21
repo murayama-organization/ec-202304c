@@ -11,7 +11,7 @@ import java.util.List;
  *
  */
 public class Order {
-
+	private final double TAX_RATE = 0.1;
 	/** 主キー（ID） */
 	private Integer id;
 	/** ユーザの主キー（ID） */
@@ -162,4 +162,33 @@ public class Order {
 				+ ", paymentMethod=" + paymentMethod + "]";
 	}
 
+	/**
+	 * 注文商品の合計金額の消費税額を返すメソッド.
+	 * 
+	 * @return 消費税分の金額
+	 */
+	public int getTax() {
+		int basePrice = 0;
+		// 商品ごとの合計金額を合算
+		for (var orderItem : this.orderItemList) {
+			basePrice += orderItem.getSubTotal();
+		}
+		// 小数点以下切り捨て
+		int tax = (int) (basePrice * TAX_RATE);
+		return tax;
+	}
+
+	/**
+	 * 注文の合計を返すメソッド.
+	 * 
+	 * @return 注文商品の合計金額
+	 */
+	public int getCalcPrice() {
+		int basePrice = 0;
+		// 商品ごとの合計金額を合算
+		for (var orderItem : this.orderItemList) {
+			basePrice += orderItem.getSubTotal();
+		}
+		return basePrice;
+	}
 }
