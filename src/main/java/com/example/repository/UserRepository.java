@@ -21,8 +21,13 @@ public class UserRepository {
 	@Autowired
 	private NamedParameterJdbcTemplate template;
 	
-	private static final RowMapper<User> USER_ROW_MAPPER = new BeanPropertyRowMapper<>(User.class);
+//	private static final RowMapper<User> USER_ROW_MAPPER = new BeanPropertyRowMapper<>(User.class);
 	
+	/**
+	 * ユーザの登録します.
+	 * 
+	 * @param user ユーザオブジェクト
+	 */
 	public void insert(User user) {
 		SqlParameterSource param = new BeanPropertySqlParameterSource(user);
 		
