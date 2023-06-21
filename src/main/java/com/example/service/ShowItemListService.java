@@ -22,22 +22,31 @@ public class ShowItemListService {
 	private ItemRepository itemRepository;
 
 	/**
-	 * 商品情報から名前であいまい検索し、取得します.(引数もしくは検索結果が存在しない場合、全商品情報を取得します)
+	 * 商品情報を全件取得します.
+	 * 
+	 * @return 商品情報一覧
+	 */
+	public List<Item> showItemList() {
+		List<Item> itemList = itemRepository.findAll();
+		return itemList;
+
+	}
+	/**
+	 * 商品情報から名前であいまい検索し、取得します.(引数もしくは検索結果が存在しない場合はnullを返します.)
 	 * 
 	 * @param name 名前
 	 * @return 商品情報一覧
 	 */
-	public List<Item> showItemList(String name) {
+	public List<Item> searchByName(String name){
 		if (name == null) {
 			List<Item> itemList = itemRepository.findAll();
 			return itemList;
 		}
 		List<Item> itemList = itemRepository.searchByNameContaining(name);
 		if (itemList.size() == 0) {
-			itemList = itemRepository.findAll();
+			itemList = null;
 			return itemList;
 		}
 		return itemList;
-
 	}
 }
