@@ -31,7 +31,7 @@ public class ShowItemListController {
 	 * @param name  商品名
 	 * @return 商品一覧画面
 	 */
-	@GetMapping("show-item-list")
+	@GetMapping("/show-item-list")
 	public String showItemList(Model model, String name) {
 		List<Item> itemList = showItemListService.searchByName(name);
 		if (itemList.size() == 0) {
