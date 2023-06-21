@@ -44,22 +44,18 @@
     <div class="top-wrapper">
       <div class="container">
         <div class="row register-page">
-          <form action="login.html" th:href="@{/register-user/register-user}" method="post" th:object="*{registerUserForm}">
-            <div class="error" th:errors="*{name}">名前を入力して下さい</div>
+          <form action="login.html" th:href="@{/register-user/register-user}" method="post" th:object="${registerUserForm}">
             <div class="row">
-              <!--　次回予定 -->
+              <div class="error" th:errors="*{lastName}">メールアドレスの形式が不正です</div>
               <div class="input-field col s6">
-                <input id="last_name" type="text" class="validate" />
+                <input id="last_name" type="text" class="validate" name="lastName" />
                 <label for="last_name">姓</label>
               </div>
+              <div class="error" th:errors="*{firstName}">メールアドレスの形式が不正です</div>
               <div class="input-field col s6">
-                <input id="first_name" type="text" class="validate" />
+                <input id="first_name" type="text" class="validate" name="firstName" />
                 <label for="first_name">名</label>
               </div>
-              <!-- <div class="input-field col s6">
-                <input id="name" type="text" name="name" class="validate" />
-                <label for="name">名前は必須です</label>
-              </div> -->
             </div>
             <div class="error" th:errors="*{email}">メールアドレスの形式が不正です</div>
             <div class="row">
