@@ -1,21 +1,12 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
   <head>
     <!--Import Google Icon Font-->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <!-- Import Materialize CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <!-- Import Font Wesome -->
-    <link
-      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-      rel="stylesheet"
-    />
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/footer.css" />
@@ -44,11 +35,9 @@
 
           <div class="header-right">
             <a href="item_list.html" th:href="@{/show-item/show-item-list}">商品一覧</a>
-            <a href="register_user.html">会員登録</a>
+            <a href="register_user.html" th:href="@{/register-user/to-register}">会員登録</a>
             <a href="#"><i class="fas fa-shopping-cart"></i>カート</a>
-            <a href="login.html" class="login">
-              <i class="fas fa-sign-in-alt"></i>ログイン
-            </a>
+            <a href="login.html" class="login"> <i class="fas fa-sign-in-alt"></i>ログイン </a>
 
             <a href="order_history.html">注文履歴</a>
           </div>
@@ -77,10 +66,7 @@
                   </div>
                   <span>ハワイアンパラダイス</span>
                 </td>
-                <td>
-                  <span class="price">&nbsp;Ｌ</span>&nbsp;&nbsp;2,380円
-                  &nbsp;&nbsp;1個
-                </td>
+                <td><span class="price">&nbsp;Ｌ</span>&nbsp;&nbsp;2,380円 &nbsp;&nbsp;1個</td>
                 <td>
                   <ul>
                     <li>ピーマン300円</li>
@@ -97,10 +83,7 @@
                   </div>
                   <span>ハワイアンパラダイス</span>
                 </td>
-                <td>
-                  <span class="price">&nbsp;Ｌ</span>&nbsp;&nbsp;2,380円
-                  &nbsp;&nbsp;1個
-                </td>
+                <td><span class="price">&nbsp;Ｌ</span>&nbsp;&nbsp;2,380円 &nbsp;&nbsp;1個</td>
                 <td>
                   <ul>
                     <li>ピーマン300円</li>
@@ -117,10 +100,7 @@
                   </div>
                   <span>ハワイアンパラダイス</span>
                 </td>
-                <td>
-                  <span class="price">&nbsp;Ｌ</span>&nbsp;&nbsp;2,380円
-                  &nbsp;&nbsp;1個
-                </td>
+                <td><span class="price">&nbsp;Ｌ</span>&nbsp;&nbsp;2,380円 &nbsp;&nbsp;1個</td>
                 <td>
                   <ul>
                     <li>ピーマン300円</li>
@@ -236,12 +216,7 @@
               <label for="address">配達日時</label>
             </div>
             <label class="order-confirm-delivery-time">
-              <input
-                name="deliveryTime"
-                type="radio"
-                value="10時"
-                checked="checked"
-              />
+              <input name="deliveryTime" type="radio" value="10時" checked="checked" />
               <span>10時</span>
             </label>
             <label class="order-confirm-delivery-time">
@@ -283,12 +258,7 @@
         <div class="row order-confirm-payment-method">
           <span>
             <label class="order-confirm-payment-method-radio">
-              <input
-                name="paymentMethod"
-                type="radio"
-                value="1"
-                checked="checked"
-              />
+              <input name="paymentMethod" type="radio" value="1" checked="checked" />
               <span>代金引換</span>
             </label>
             <label class="order-confirm-payment-method-radio">
@@ -298,11 +268,7 @@
           </span>
         </div>
         <div class="row order-confirm-btn">
-          <button
-            class="btn"
-            type="button"
-            onclick="location.href='order_finished.html'"
-          >
+          <button class="btn" type="button" onclick="location.href='order_finished.html'">
             <span>この内容で注文する</span>
           </button>
         </div>
