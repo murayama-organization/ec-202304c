@@ -44,7 +44,7 @@
     <div class="top-wrapper">
       <div class="container">
         <div class="row register-page">
-          <form action="login.html" th:href="@{/register-user/register-user}" method="post" th:object="${registerUserForm}">
+          <form action="login.html" th:action="@{/register-user/register-user}" method="post" th:object="${registerUserForm}">
             <div class="row">
               <div class="error" th:errors="*{lastName}">メールアドレスの形式が不正です</div>
               <div class="input-field col s6">
@@ -158,7 +158,7 @@
               </div>
             </div>
             <div class="row register-admin-btn">
-              <button class="btn" type="button" onclick="location.href='login.html'">
+              <button class="btn" type="submit">
                 <span>登録<i class="material-icons right">done</i></span>
               </button>
             </div>

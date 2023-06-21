@@ -29,7 +29,7 @@ public class RegisterUserForm {
 	private String password;
 	/** 郵便番号 */
 	@NotBlank(message = "郵便番号は必須です")
-	@Pattern(regexp = "^[0-9]{3}-[0-9]{4}$", message = "郵便番号はXXX-XXXXXの形式で入力してください")
+	@Pattern(regexp = "^[0-9]{3}-[0-9]{4}$", message = "郵便番号はXXX-XXXXの形式で入力してください")
 	private String zipcode;
 	/** 県 */
 	@NotBlank(message = "県は必須です")
@@ -45,7 +45,7 @@ public class RegisterUserForm {
 	@Pattern(regexp = "^\\d{2,4}-\\d{2,4}-\\d{4}$", message = "電話番号はXXXX-XXXX-XXXXの形式で入力してください")
 	private String telephone;
 	/** 確認用パスワード */
-	@NotBlank(message = "確認用パスワード")
+	@NotBlank(message = "確認用パスワードは必須です")
 	private String passwordConfirmation;
 
 	public String getLastName() {

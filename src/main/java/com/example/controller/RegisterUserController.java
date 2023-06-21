@@ -53,6 +53,10 @@ public class RegisterUserController {
 		User user = new User();
 		BeanUtils.copyProperties(form, user);
 		
+		String name = form.getLastName() + form.getFirstName();
+		
+		user.setName(name);
+		
 		registerUserService.registerUser(user);
 		
 		return "ec/login";
