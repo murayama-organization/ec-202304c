@@ -66,7 +66,7 @@ public class RegisterUserController {
 
 		registerUserService.registerUser(user);
 
-		return "ec/login";
+		return "redirect:/login-user/to-login";
 	}
 
 }
