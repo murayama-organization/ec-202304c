@@ -23,9 +23,9 @@ public class UserRepository {
 
 	@Autowired
 	private NamedParameterJdbcTemplate template;
-	
+
 	private static final RowMapper<User> USER_ROW_MAPPER = new BeanPropertyRowMapper<>(User.class);
-	
+
 	/**
 	 * ユーザの登録します.
 	 * 
@@ -33,33 +33,32 @@ public class UserRepository {
 	 */
 	public void insert(User user) {
 		SqlParameterSource param = new BeanPropertySqlParameterSource(user);
-		
+
 		String sql = "INSERT INTO users(name, email, zipcode, pref, municipalities, address, telephone, password) "
 				+ " VALUES(:name, :email, :zipcode, :pref, :municipalities, :address, :telephone, :password);";
-		
+
 		template.update(sql, param);
 	}
-	
+
 	/**
-	 * メールアドレスからユーザ情報を検索します.
-	 * ユーザ情報がない場合はnullを返します
+	 * メールアドレスからユーザ情報を検索します. ユーザ情報がない場合はnullを返します
 	 * 
 	 * @param email メールアドレス
-	 * @return　ユーザ情報
+	 * @return ユーザ情報
 	 */
 	public User findByEmail(String email) {
 		String sql = "SELECT id, name, email, zipcode, pref, municipalities, address, telephone, password FROM "
 				+ " users WHERE email = :email";
-		
+
 		SqlParameterSource param = new MapSqlParameterSource().addValue("email", email);
-		
+
 		List<User> userList = template.query(sql, param, USER_ROW_MAPPER);
-		
-		if(userList.size() == 0) {
+
+		if (userList.size() == 0) {
 			return null;
 		}
-		
+
 		return userList.get(0);
 	}
-	
+
 }
