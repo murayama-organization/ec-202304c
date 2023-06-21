@@ -17,6 +17,10 @@ public class User {
 	private String password;
 	/** 郵便番号 */
 	private String zipcode;
+	/** 県 */
+	private String pref;
+	/** 市町村 */
+	private String municipalities;
 	/** 住所 */
 	private String address;
 	/** 電話番号 */
@@ -62,6 +66,22 @@ public class User {
 		this.zipcode = zipcode;
 	}
 
+	public String getPref() {
+		return pref;
+	}
+
+	public void setPref(String pref) {
+		this.pref = pref;
+	}
+
+	public String getMunicipalities() {
+		return municipalities;
+	}
+
+	public void setMunicipalities(String municipalities) {
+		this.municipalities = municipalities;
+	}
+
 	public String getAddress() {
 		return address;
 	}
@@ -81,7 +101,8 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", zipcode="
-				+ zipcode + ", address=" + address + ", telephone=" + telephone + "]";
+				+ zipcode + ", pref=" + pref + ", municipalities=" + municipalities + ", address=" + address
+				+ ", telephone=" + telephone + "]";
 	}
 
 }
