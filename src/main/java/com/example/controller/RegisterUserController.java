@@ -24,7 +24,7 @@ public class RegisterUserController {
 
 	@Autowired
 	private RegisterUserService registerUserService;
-	
+
 	/**
 	 * ユーザ登録画面に遷移します.
 	 * 
@@ -34,7 +34,7 @@ public class RegisterUserController {
 	public String toRegister(RegisterUserForm form) {
 		return "ec/register_user";
 	}
-	
+
 	/**
 	 * ユーザを登録します.
 	 * 
@@ -42,24 +42,31 @@ public class RegisterUserController {
 	 */
 	@PostMapping("/register-user")
 	public String registerUser(@Validated RegisterUserForm form, BindingResult result) {
-		if(!(form.getPasswordConfirmation().equals(form.getPassword()))) {
+
+		User exitUser = registerUserService.searchByEmail(form.getEmail());
+
+		if (exitUser != null) {
+			result.rejectValue("email", null, "そのメールアドレスは既に使われています");
+		}
+
+		if (!(form.getPasswordConfirmation().equals(form.getPassword()))) {
 			result.rejectValue("passwordConfirmation", null, "パスワードと確認用パスワードが不一致です");
 		}
-		
-		if(result.hasErrors()) {
+
+		if (result.hasErrors()) {
 			return toRegister(form);
 		}
-		
+
 		User user = new User();
 		BeanUtils.copyProperties(form, user);
-		
+
 		String name = form.getLastName() + form.getFirstName();
-		
+
 		user.setName(name);
-		
+
 		registerUserService.registerUser(user);
-		
+
 		return "ec/login";
 	}
-	
+
 }
