@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.stereotype.Repository;
 
 import com.example.domain.User;
 
@@ -16,6 +17,7 @@ import com.example.domain.User;
  * 
  * @author yousuke.murayama
  */
+@Repository
 public class UserRepository {
 
 	@Autowired
