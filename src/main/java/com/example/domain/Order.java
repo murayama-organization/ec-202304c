@@ -28,7 +28,11 @@ public class Order {
 	private String destinationEmail;
 	/** 宛先郵便番号 */
 	private String destinationZipcode;
-	/** 宛先住所 */
+	/** 都道府県 */
+	private String destinationPref;
+	/** 市町村 */
+	private String destinationMunicipalities;
+	/** 宛先番地 */
 	private String destinationAddress;
 	/** 宛先TEL */
 	private String destinationTel;
@@ -40,6 +44,17 @@ public class Order {
 	private User user;
 	/** 注文商品リスト */
 	private List<OrderItem> orderItemList;
+
+	@Override
+	public String toString() {
+		return "Order [TAX_RATE=" + TAX_RATE + ", id=" + id + ", userId=" + userId + ", status=" + status
+				+ ", totalPrice=" + totalPrice + ", orderDate=" + orderDate + ", destinationName=" + destinationName
+				+ ", destinationEmail=" + destinationEmail + ", destinationZipcode=" + destinationZipcode
+				+ ", destinationPref=" + destinationPref + ", destinationMunicipalities=" + destinationMunicipalities
+				+ ", destinationAddress=" + destinationAddress + ", destinationTel=" + destinationTel
+				+ ", deliveryTime=" + deliveryTime + ", paymentMethod=" + paymentMethod + ", user=" + user
+				+ ", orderItemList=" + orderItemList + "]";
+	}
 
 	public Integer getId() {
 		return id;
@@ -105,6 +120,22 @@ public class Order {
 		this.destinationZipcode = destinationZipcode;
 	}
 
+	public String getDestinationPref() {
+		return destinationPref;
+	}
+
+	public void setDestinationPref(String destinationPref) {
+		this.destinationPref = destinationPref;
+	}
+
+	public String getDestinationMunicipalities() {
+		return destinationMunicipalities;
+	}
+
+	public void setDestinationMunicipalities(String destinationMunicipalities) {
+		this.destinationMunicipalities = destinationMunicipalities;
+	}
+
 	public String getDestinationAddress() {
 		return destinationAddress;
 	}
@@ -153,13 +184,8 @@ public class Order {
 		this.orderItemList = orderItemList;
 	}
 
-	@Override
-	public String toString() {
-		return "Order [id=" + id + ", userId=" + userId + ", status=" + status + ", totalPrice=" + totalPrice
-				+ ", orderDate=" + orderDate + ", destinationName=" + destinationName + ", destinationEmail="
-				+ destinationEmail + ", destinationZipcode=" + destinationZipcode + ", destinationAddress="
-				+ destinationAddress + ", destinationTel=" + destinationTel + ", deliveryTime=" + deliveryTime
-				+ ", paymentMethod=" + paymentMethod + "]";
+	public double getTAX_RATE() {
+		return TAX_RATE;
 	}
 
 	/**
