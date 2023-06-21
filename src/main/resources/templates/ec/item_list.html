@@ -64,7 +64,8 @@
         <div class="items">
           <div class="item" th:each="item:${itemList}">
             <div class="item-icon"><img src="img/1.jpg" th:src="@{/img/} + ${item.imagePath}" /></div>
-            <a href="item_detail.html" th:href="@{/show-item/show-item-detail?name=} + ${item.name}" th:text="${item.name}">ハワイアンパラダイス</a><br />
+            <a href="item_detail.html" th:href="@{/show-detail/show-item-detail?itemId=} + ${item.id}"><span th:text="${item.name}">ハワイアンパラダイス</span></a
+            ><br />
             <span class="price">Ｍ</span><span th:text="${#numbers.formatInteger(item.priceM,0,'COMMA')}">1,380</span>円(税抜)<br />
             <span class="price">Ｌ</span><span th:text="${#numbers.formatInteger(item.priceL,0,'COMMA')}">2,380</span>円(税抜)<br />
           </div>
