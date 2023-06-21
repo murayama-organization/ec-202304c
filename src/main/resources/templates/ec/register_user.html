@@ -69,7 +69,7 @@
               <div class="input-field col s12">
                 <input id="zipcode" type="text" name="zipcode" maxlength="8" th:field="*{zipcode}" />
                 <label for="zipcode">郵便番号</label>
-                <button class="btn" type="button">
+                <button class="btn" type="button" id="searchZipCodeBtn">
                   <span>住所検索</span>
                 </button>
               </div>
@@ -130,12 +130,12 @@
               </div>
               <div class="error" th:errors="*{municipalities}">市町村を入力して下さい</div>
               <div class="input-field col s4">
-                <input id="municipalities" type="text" name="municipalities" th:field="*{municipalities}" />
+                <input id="municipalities" type="text" name="municipalities" th:field="*{municipalities}" placeholder="XXX市" />
                 <label for="municipalities">市区町村</label>
               </div>
               <div class="error" th:errors="*{address}">住所を入力して下さい</div>
               <div class="input-field col s4">
-                <input id="address" type="text" name="address" th:field="*{address}" />
+                <input id="address" type="text" name="address" th:field="*{address}" placeholder="XXXX-XX-X" />
                 <label for="address">住所</label>
               </div>
             </div>
@@ -176,5 +176,7 @@
     </footer>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script th:src="@{/js/zipcode.js}"></script>
   </body>
 </html>
