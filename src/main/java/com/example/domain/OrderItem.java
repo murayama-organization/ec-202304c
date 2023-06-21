@@ -86,4 +86,22 @@ public class OrderItem {
 				+ ", size=" + size + ", item=" + item + ", orderToppingList=" + orderToppingList + "]";
 	}
 
+	public int getSubTotal() {
+		int totalPrice = 0;
+		int quantity = this.getQuantity();
+		List<OrderTopping> toppingList = this.getOrderToppingList();
+		if (this.getSize().equals('L')) {
+			totalPrice += this.item.getPriceL();
+			for (var topping : toppingList) {
+				totalPrice += topping.getTopping().getPriceL();
+			}
+		} else if (this.getSize().equals('M')) {
+			totalPrice += this.item.getPriceM();
+			for (var topping : toppingList) {
+				totalPrice += topping.getTopping().getPriceM();
+			}
+		}
+		totalPrice *= quantity;
+		return totalPrice;
+	}
 }
