@@ -48,26 +48,26 @@
             <div class="row">
               <div class="error" th:errors="*{lastName}">メールアドレスの形式が不正です</div>
               <div class="input-field col s6">
-                <input id="last_name" type="text" class="validate" name="lastName" />
+                <input id="last_name" type="text" class="validate" name="lastName" th:field="*{lastName}" />
                 <label for="last_name">姓</label>
               </div>
               <div class="error" th:errors="*{firstName}">メールアドレスの形式が不正です</div>
               <div class="input-field col s6">
-                <input id="first_name" type="text" class="validate" name="firstName" />
+                <input id="first_name" type="text" class="validate" name="firstName" th:field="*{firstName}" />
                 <label for="first_name">名</label>
               </div>
             </div>
             <div class="error" th:errors="*{email}">メールアドレスの形式が不正です</div>
             <div class="row">
               <div class="input-field col s12">
-                <input id="email" type="email" name="email" class="validate" />
+                <input id="email" type="email" name="email" class="validate" th:field="*{email}" />
                 <label for="email">メールアドレス</label>
               </div>
             </div>
             <div class="error" th:errors="*{zipcode}">郵便番号はXXX-XXXXの形式で入力してください</div>
             <div class="row">
               <div class="input-field col s12">
-                <input id="zipcode" type="text" name="zipcode" maxlength="8" />
+                <input id="zipcode" type="text" name="zipcode" maxlength="8" th:field="*{zipcode}" />
                 <label for="zipcode">郵便番号</label>
                 <button class="btn" type="button">
                   <span>住所検索</span>
@@ -130,30 +130,30 @@
               </div>
               <div class="error" th:errors="*{municipalities}">市町村を入力して下さい</div>
               <div class="input-field col s4">
-                <input id="municipalities" type="text" name="municipalities" />
+                <input id="municipalities" type="text" name="municipalities" th:field="*{municipalities}" />
                 <label for="municipalities">市区町村</label>
               </div>
               <div class="error" th:errors="*{address}">住所を入力して下さい</div>
               <div class="input-field col s4">
-                <input id="address" type="text" name="address" />
+                <input id="address" type="text" name="address" th:field="*{address}" />
                 <label for="address">住所</label>
               </div>
             </div>
             <div class="error" th:errors="*{telephone}">電話番号はXXXX-XXXX-XXXXの形式で入力してください</div>
             <div class="row">
-              <div class="input-field col s12"><input id="tel" type="tel" name="telephone" /> <label for="tel">電話番号</label></div>
+              <div class="input-field col s12"><input id="tel" type="tel" name="telephone" th:field="*{telephone}" /> <label for="tel">電話番号</label></div>
             </div>
             <div class="error" th:errors="*{password}">パスワードは８文字以上１６文字以内で設定してください</div>
             <div class="row">
               <div class="input-field col s12">
-                <input id="password" type="password" class="validate" minlength="8" name="password" />
+                <input id="password" type="password" class="validate" minlength="8" name="password" th:field="*{password}" />
                 <label for="password">パスワード</label>
               </div>
             </div>
             <div class="error" th:errors="*{passwordConfirmation}">パスワードと確認用パスワードが不一致です</div>
             <div class="row">
               <div class="input-field col s12">
-                <input id="confirmation_password" type="password" class="validate" minlength="8" name="passwordConfirmation" />
+                <input id="confirmation_password" type="password" class="validate" minlength="8" name="passwordConfirmation" th:field="*{passwordConfirmation}" />
                 <label for="confirmation_password">確認用パスワード</label>
               </div>
             </div>
