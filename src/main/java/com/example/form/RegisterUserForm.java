@@ -20,7 +20,7 @@ public class RegisterUserForm {
 	@NotBlank(message = "名前は必須です")
 	private String firstName;
 	/** Eメール */
-	@NotBlank(message = "電話番号は必須です")
+	@NotBlank(message = "メールアドレスは必須です")
 	@Email(message = "メールアドレスの形式が不正です")
 	private String email;
 	/** パスワード */
