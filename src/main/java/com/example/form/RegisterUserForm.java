@@ -13,9 +13,12 @@ import jakarta.validation.constraints.Size;
  */
 public class RegisterUserForm {
 
-	/** 名前 */
+	/** 姓 */
+	@NotBlank(message = "苗字は必須です")
+	private String lastName;
+	/** 名 */
 	@NotBlank(message = "名前は必須です")
-	private String name;
+	private String firstName;
 	/** Eメール */
 	@NotBlank(message = "電話番号は必須です")
 	@Email(message = "メールアドレスの形式が不正です")
@@ -45,12 +48,20 @@ public class RegisterUserForm {
 	@NotBlank(message = "確認用パスワード")
 	private String passwordConfirmation;
 
-	public String getName() {
-		return name;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 	public String getEmail() {
@@ -119,9 +130,10 @@ public class RegisterUserForm {
 
 	@Override
 	public String toString() {
-		return "RegisterUserForm [name=" + name + ", email=" + email + ", password=" + password + ", zipcode=" + zipcode
-				+ ", pref=" + pref + ", municipalities=" + municipalities + ", address=" + address + ", telephone="
-				+ telephone + ", passwordConfirmation=" + passwordConfirmation + "]";
+		return "RegisterUserForm [lastName=" + lastName + ", firstName=" + firstName + ", email=" + email
+				+ ", password=" + password + ", zipcode=" + zipcode + ", pref=" + pref + ", municipalities="
+				+ municipalities + ", address=" + address + ", telephone=" + telephone + ", passwordConfirmation="
+				+ passwordConfirmation + "]";
 	}
 
 }
