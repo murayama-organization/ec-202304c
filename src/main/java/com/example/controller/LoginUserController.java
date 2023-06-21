@@ -57,7 +57,7 @@ public class LoginUserController {
 		
 		session.setAttribute("currentUser", user);
 		
-		return "redirect:/showList";
+		return "redirect:/show-item/show-item-list";
 	}
 	
 	/**
