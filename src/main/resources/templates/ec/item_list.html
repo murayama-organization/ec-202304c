@@ -1,21 +1,12 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
   <head>
     <!--Import Google Icon Font-->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <!-- Import Materialize CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <!-- Import Font Wesome -->
-    <link
-      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-      rel="stylesheet"
-    />
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/footer.css" />
@@ -43,14 +34,10 @@
           </div>
 
           <div class="header-right">
-            <a href="item_list.html">商品一覧</a>
-            <a href="register_user.html">会員登録</a>
-            <a href="cart_list.html">
-              <i class="fas fa-shopping-cart"> </i>カート
-            </a>
-            <a href="login.html" class="login">
-              <i class="fas fa-sign-in-alt"></i>ログイン
-            </a>
+            <a href="item_list.html" th:href="@{/show-item/show-item-list}">商品一覧</a>
+            <a href="register_user.html" th:href="@{/register-user/to-register}">会員登録</a>
+            <a href="cart_list.html"> <i class="fas fa-shopping-cart"> </i>カート </a>
+            <a href="login.html" class="login"> <i class="fas fa-sign-in-alt"></i>ログイン </a>
 
             <a href="order_history.html">注文履歴</a>
           </div>
@@ -60,13 +47,14 @@
     <!-- search form -->
     <div class="search-wrapper">
       <div class="container">
-        <form method="post" class="search-form">
-          <input type="text" name="name" class="search-name-input" />
+        <form method="get" class="search-form" action="item_list.html" th:action="@{/show-item/show-item-list}">
+          <input type="text" name="name" class="search-name-input" th:value="${name}" />
 
-          <button class="btn search-btn" type="button">
+          <button class="btn search-btn" type="submit">
             <span>検　索</span>
           </button>
         </form>
+        <div th:if="${message}" th:text="${message}"></div>
       </div>
     </div>
 
@@ -74,130 +62,11 @@
     <div class="item-wrapper">
       <div class="container">
         <div class="items">
-          <div class="item">
-            <div class="item-icon">
-              <img src="img/1.jpg" />
-            </div>
-            <a href="item_detail.html">ハワイアンパラダイス</a><br />
-            <span class="price">Ｍ</span>1,380円(税抜)<br />
-            <span class="price">Ｌ</span>2,380円(税抜)<br />
-          </div>
-
-          <div class="item">
-            <div class="item-icon">
-              <img src="img/2.jpg" />
-            </div>
-            <a href="item_detail.html">ハワイアンパラダイス</a><br />
-            <span class="price">Ｍ</span>1,380円(税抜)<br />
-            <span class="price">Ｌ</span>2,380円(税抜)<br />
-          </div>
-
-          <div class="item">
-            <div class="item-icon">
-              <img src="img/3.jpg" />
-            </div>
-            <a href="item_detail.html">ハワイアンパラダイス</a><br />
-            <span class="price">Ｍ</span>1,380円(税抜)<br />
-            <span class="price">Ｌ</span>2,380円(税抜)<br />
-          </div>
-
-          <div class="item">
-            <div class="item-icon">
-              <img src="img/4.jpg" />
-            </div>
-            <a href="item_detail.html">ハワイアンパラダイス</a><br />
-            <span class="price">Ｍ</span>1,380円(税抜)<br />
-            <span class="price">Ｌ</span>2,380円(税抜)<br />
-          </div>
-
-          <div class="item">
-            <div class="item-icon">
-              <img src="img/5.jpg" />
-            </div>
-            <a href="item_detail.html">ハワイアンパラダイス</a><br />
-            <span class="price">Ｍ</span>1,380円(税抜)<br />
-            <span class="price">Ｌ</span>2,380円(税抜)<br />
-          </div>
-
-          <div class="item">
-            <div class="item-icon">
-              <img src="img/6.jpg" />
-            </div>
-            <a href="item_detail.html">ハワイアンパラダイス</a><br />
-            <span class="price">Ｍ</span>1,380円(税抜)<br />
-            <span class="price">Ｌ</span>2,380円(税抜)<br />
-          </div>
-
-          <div class="item">
-            <div class="item-icon">
-              <img src="img/7.jpg" />
-            </div>
-            <a href="item_detail.html">ハワイアンパラダイス</a><br />
-            <span class="price">Ｍ</span>1,380円(税抜)<br />
-            <span class="price">Ｌ</span>2,380円(税抜)<br />
-          </div>
-
-          <div class="item">
-            <div class="item-icon">
-              <img src="img/8.jpg" />
-            </div>
-            <a href="item_detail.html">ハワイアンパラダイス</a><br />
-            <span class="price">Ｍ</span>1,380円(税抜)<br />
-            <span class="price">Ｌ</span>2,380円(税抜)<br />
-          </div>
-
-          <div class="item">
-            <div class="item-icon">
-              <img src="img/9.jpg" />
-            </div>
-            <a href="item_detail.html">ハワイアンパラダイス</a><br />
-            <span class="price">Ｍ</span>1,380円(税抜)<br />
-            <span class="price">Ｌ</span>2,380円(税抜)<br />
-          </div>
-
-          <div class="item">
-            <div class="item-icon">
-              <img src="img/10.jpg" />
-            </div>
-            <a href="item_detail.html">ハワイアンパラダイス</a><br />
-            <span class="price">Ｍ</span>1,380円(税抜)<br />
-            <span class="price">Ｌ</span>2,380円(税抜)<br />
-          </div>
-
-          <div class="item">
-            <div class="item-icon">
-              <img src="img/11.jpg" />
-            </div>
-            <a href="item_detail.html">ハワイアンパラダイス</a><br />
-            <span class="price">Ｍ</span>1,380円(税抜)<br />
-            <span class="price">Ｌ</span>2,380円(税抜)<br />
-          </div>
-
-          <div class="item">
-            <div class="item-icon">
-              <img src="img/12.jpg" />
-            </div>
-            <a href="item_detail.html">ハワイアンパラダイス</a><br />
-            <span class="price">Ｍ</span>1,380円(税抜)<br />
-            <span class="price">Ｌ</span>2,380円(税抜)<br />
-          </div>
-
-          <div class="item">
-            <div class="item-icon">
-              <img src="img/13.jpg" />
-            </div>
-            <a href="item_detail.html">ハワイアンパラダイス</a><br />
-            <span class="price">Ｍ</span>1,380円(税抜)<br />
-            <span class="price">Ｌ</span>2,380円(税抜)<br />
-          </div>
-
-          <div class="item">
-            <div class="item-icon">
-              <img src="img/14.jpg" />
-            </div>
-            <a href="item_detail.html">ハワイアンパラダイス</a><br />
-            <span class="price">Ｍ</span>1,380円(税抜)<br />
-            <span class="price">Ｌ</span>2,380円(税抜)<br />
+          <div class="item" th:each="item:${itemList}">
+            <div class="item-icon"><img src="img/1.jpg" th:src="@{/img/} + ${item.imagePath}" /></div>
+            <a href="item_detail.html" th:href="@{/show-item/show-item-detail?name=} + ${item.name}" th:text="${item.name}">ハワイアンパラダイス</a><br />
+            <span class="price">Ｍ</span><span th:text="${#numbers.formatInteger(item.priceM,0,'COMMA')}">1,380</span>円(税抜)<br />
+            <span class="price">Ｌ</span><span th:text="${#numbers.formatInteger(item.priceL,0,'COMMA')}">2,380</span>円(税抜)<br />
           </div>
         </div>
       </div>

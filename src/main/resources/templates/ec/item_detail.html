@@ -1,21 +1,12 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
   <head>
     <!--Import Google Icon Font-->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <!-- Import Materialize CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <!-- Import Font Wesome -->
-    <link
-      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-      rel="stylesheet"
-    />
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/footer.css" />
@@ -43,14 +34,10 @@
           </div>
 
           <div class="header-right">
-            <a href="item_list.html">商品一覧</a>
-            <a href="register_user.html">会員登録</a>
-            <a href="cart_list.html">
-              <i class="fas fa-shopping-cart"> </i>カート
-            </a>
-            <a href="login.html" class="login">
-              <i class="fas fa-sign-in-alt"></i>ログイン
-            </a>
+            <a href="item_list.html" th:href="@{/show-item/show-item-list}">商品一覧</a>
+            <a href="register_user.html" th:href="@{/register-user/to-register}">会員登録</a>
+            <a href="cart_list.html"> <i class="fas fa-shopping-cart"> </i>カート </a>
+            <a href="login.html" class="login"> <i class="fas fa-sign-in-alt"></i>ログイン </a>
 
             <a href="order_history.html">注文履歴</a>
           </div>
@@ -65,34 +52,25 @@
             <div class="item-icon">
               <img src="img/1.jpg" />
             </div>
-            <div class="item-intro">
-              ハワイで取れる名産物でかつオーガニックな食料がふんだんに使われたローカルフーズです。健康志向の方に大人気の商品です。
-            </div>
+            <div class="item-intro">ハワイで取れる名産物でかつオーガニックな食料がふんだんに使われたローカルフーズです。健康志向の方に大人気の商品です。</div>
           </div>
           <div class="row item-size">
             <div class="item-hedding">サイズ</div>
             <div>
               <label>
                 <input id="size-m" name="size" type="radio" checked="checked" />
-                <span>
-                  &nbsp;<span class="price">Ｍ</span
-                  >&nbsp;&nbsp;1,380円(税抜)</span
-                >
+                <span> &nbsp;<span class="price">Ｍ</span>&nbsp;&nbsp;1,380円(税抜)</span>
               </label>
               <label>
                 <input id="size-l" name="size" type="radio" />
-                <span>
-                  &nbsp;<span class="price">Ｌ</span
-                  >&nbsp;&nbsp;2,380円(税抜)</span
-                >
+                <span> &nbsp;<span class="price">Ｌ</span>&nbsp;&nbsp;2,380円(税抜)</span>
               </label>
             </div>
           </div>
           <div class="row item-toppings">
             <div class="item-hedding">
               トッピング：&nbsp;1つにつき
-              <span>&nbsp;Ｍ&nbsp;</span>&nbsp;&nbsp;200円(税抜)
-              <span>&nbsp;Ｌ</span>&nbsp;&nbsp;300円(税抜)
+              <span>&nbsp;Ｍ&nbsp;</span>&nbsp;&nbsp;200円(税抜) <span>&nbsp;Ｌ</span>&nbsp;&nbsp;300円(税抜)
             </div>
             <div>
               <label class="item-topping">
@@ -163,11 +141,7 @@
             <span>この商品金額：38,000 円(税抜)</span>
           </div>
           <div class="row item-cart-btn">
-            <button
-              class="btn"
-              type="button"
-              onclick="location.href='cart_list.html'"
-            >
+            <button class="btn" type="button" onclick="location.href='cart_list.html'">
               <i class="material-icons left">add_shopping_cart</i>
               <span>カートに入れる</span>
             </button>
