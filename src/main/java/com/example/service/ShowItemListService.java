@@ -44,7 +44,6 @@ public class ShowItemListService {
 		}
 		List<Item> itemList = itemRepository.searchByNameContaining(name);
 		if (itemList.size() == 0) {
-			itemList = null;
 			return itemList;
 		}
 		return itemList;
