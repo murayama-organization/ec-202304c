@@ -24,26 +24,7 @@
     <title>ラクラクアロハ</title>
   </head>
   <body>
-    <header>
-      <div class="container">
-        <div class="header">
-          <div class="header-left">
-            <a href="top.html">
-              <img class="logo" th:src="@{/img/header_logo.png}" />
-            </a>
-          </div>
-
-          <div class="header-right">
-            <a href="item_list.html" th:href="@{/show-item/show-item-list}">商品一覧</a>
-            <a href="register_user.html" th:href="@{/register-user/to-register}">会員登録</a>
-            <a href="#"><i class="fas fa-shopping-cart"></i>カート</a>
-            <a href="login.html" class="login" th:href="@{/login-user/to-login}"> <i class="fas fa-sign-in-alt"></i>ログイン </a>
-
-            <a href="order_history.html">注文履歴</a>
-          </div>
-        </div>
-      </div>
-    </header>
+    <div th:insert="global/header::frag_header">ヘッダー</div>
     <div class="top-wrapper">
       <div class="container">
         <h1 class="page-title">決済が完了しました！</h1>

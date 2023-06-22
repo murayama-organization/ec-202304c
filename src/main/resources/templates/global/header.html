@@ -24,43 +24,27 @@
     <title>ラクラクアロハ</title>
   </head>
   <body>
-    <div th:insert="global/header::frag_header">ヘッダー</div>
-    <!-- search form -->
-    <div class="search-wrapper">
+    <header th:fragment="frag_header">
       <div class="container">
-        <form method="get" class="search-form" action="item_list.html" th:action="@{/show-item/show-item-list}">
-          <input type="text" name="name" class="search-name-input" th:value="${name}" />
+        <div class="header">
+          <div class="header-left">
+            <a href="top.html">
+              <img class="logo" th:src="@{/img/header_logo.png}" />
+            </a>
+          </div>
 
-          <button class="btn search-btn" type="submit">
-            <span>検　索</span>
-          </button>
-        </form>
-        <div th:if="${message}" th:text="${message}"></div>
-      </div>
-    </div>
+          <div class="header-right">
+            <a href="item_list.html" th:href="@{/show-item/show-item-list}">商品一覧</a>
+            <a href="register_user.html" th:href="@{/register-user/to-register}">会員登録</a>
+            <a href="cart_list.html" th:href="@{/shopping-cart/show-cart}"> <i class="fas fa-shopping-cart"> </i>カート </a>
+            <a href="login.html" class="login" th:href="@{/login-user/to-login}"> <i class="fas fa-sign-in-alt"></i>ログイン </a>
 
-    <!-- item list -->
-    <div class="item-wrapper">
-      <div class="container">
-        <div class="items">
-          <div class="item" th:each="item:${itemList}">
-            <div class="item-icon"><img src="img/1.jpg" th:src="@{/img/} + ${item.imagePath}" /></div>
-            <a href="item_detail.html" th:href="@{/show-detail/show-item-detail?itemId=} + ${item.id}"><span th:text="${item.name}">ハワイアンパラダイス</span></a
-            ><br />
-            <span class="price">Ｍ</span><span th:text="${#numbers.formatInteger(item.priceM,0,'COMMA')}">1,380</span>円(税抜)<br />
-            <span class="price">Ｌ</span><span th:text="${#numbers.formatInteger(item.priceL,0,'COMMA')}">2,380</span>円(税抜)<br />
+            <a href="order_history.html">注文履歴</a>
           </div>
         </div>
       </div>
-    </div>
+    </header>
 
-    <footer>
-      <div class="container">
-        <img th:src="@{/img/header_logo.png}" />
-        <p>アロハな気分をあなたにお届け！</p>
-      </div>
-    </footer>
-    <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>
