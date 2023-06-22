@@ -31,12 +31,25 @@
         <form method="get" class="search-form" action="item_list.html" th:action="@{/show-item/show-item-list}">
           <input list="item-name" type="text" name="name" class="search-name-input" th:value="${name}" />
           <datalist id="item-name">
-            <option th:each="item:${itemList}" th:value="${item.name}">
+            <option th:each="item:${itemList}" th:value="${item.name}"></option>
           </datalist>
+
           <button class="btn search-btn" type="submit">
             <span>検　索</span>
           </button>
         </form>
+
+        <div class="input-field col s12">
+          <form class="change-line" action="item_list.html" th:action="@{/show-item/show-item-list}">
+            <select class="browser-default" id="price_line" name="line">
+              <th:block th:each="line:${lineMap}">
+                <option th:if="${line.getKey().equals(linename)}" th:value="${line.getKey()}" th:text="${line.getValue()}" selected></option>
+                <option th:unless="${line.getKey().equals(linename)}" th:value="${line.getKey()}" th:text="${line.getValue()}"></option>
+              </th:block>
+            </select>
+          </form>
+        </div>
+
         <div th:if="${message}" th:text="${message}"></div>
       </div>
     </div>
@@ -73,6 +86,13 @@
           prevText: "前へ",
           nextText: "次へ",
         });
+      });
+    </script>
+    <script>
+      $("#price_line").on("change", function () {
+        let form = document.querySelector(".change-line");
+        form.line.value = $("#price_line").val();
+        form.submit();
       });
     </script>
   </body>

@@ -24,10 +24,11 @@ public class ShowItemListService {
 	/**
 	 * 商品情報を全件取得します.
 	 * 
+	 * @param line 並び替え名
 	 * @return 商品情報一覧
 	 */
-	public List<Item> showItemList() {
-		List<Item> itemList = itemRepository.findAll();
+	public List<Item> showItemList(String line) {
+		List<Item> itemList = itemRepository.findAll(line);
 		return itemList;
 
 	}
@@ -38,9 +39,9 @@ public class ShowItemListService {
 	 * @param name 名前
 	 * @return 商品情報一覧
 	 */
-	public List<Item> searchByName(String name) {
+	public List<Item> searchByName(String name, String line) {
 		if (name == null) {
-			List<Item> itemList = itemRepository.findAll();
+			List<Item> itemList = itemRepository.findAll(line);
 			return itemList;
 		}
 		List<Item> itemList = itemRepository.searchByNameContaining(name);
