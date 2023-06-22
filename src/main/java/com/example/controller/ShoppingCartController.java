@@ -42,6 +42,14 @@ public class ShoppingCartController {
 
 	@PostMapping("/add-item")
 	public String addItem(AddItemToShoppingCartForm form) {
+		User user = (User) httpSession.getAttribute("currentUser");
+		Integer accessId = null;
+		if (user == null) {
+			accessId = httpSession.getId().hashCode();
+		} else {
+			accessId = user.getId();
+		}
+		cartService.addItemToShoppingCart(form, accessId);
 		return "redirect:/shopping-cart/show-cart";
 	}
 

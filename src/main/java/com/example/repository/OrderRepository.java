@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.ResultSetExtractor;
-import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import com.example.domain.Order;
@@ -18,8 +19,6 @@ import com.example.domain.OrderTopping;
 
 @Repository
 public class OrderRepository {
-	// insert用マッパー
-	private static final RowMapper<Order> ORDER_ROW_MAPPER = new BeanPropertyRowMapper<>(Order.class);
 	// 検索用マッパー
 	private static final ResultSetExtractor<List<Order>> ORDER_RESULT_SET_EXTRACTOR = (rs) -> {
 		// 注文が入るOrderを生成
@@ -109,5 +108,20 @@ public class OrderRepository {
 				sessionId);
 		String updateSql = "UPDATE orders SET user_id=:userId WHERE user_id=:sessionId";
 		template.update(updateSql, param);
+	}
+
+	public Integer insert(Order order) {
+		SqlParameterSource param = new BeanPropertySqlParameterSource(order);
+
+		// インサート処理
+		StringBuilder sb = new StringBuilder();
+		sb.append(
+				"INSERT INTO orders( user_id,status, total_price, order_date,destination_name,destination_email, destination_zipcode,destination_pref,destination_municipalities,destination_address,destination_tel,delivery_time,payment_method) ");
+		sb.append(
+				"VALUES(:userId,:status, :totalPrice, :orderDate,:destinationName,:destinationEmail, :destinationZipcode,:destinationPref,:destinationMunicipalities,:destinationAddress,:destinationTel,:deliveryTime,:paymentMethod)");
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+		String[] keyColumnNames = { "id" };
+		template.update(sb.toString(), param, keyHolder, keyColumnNames);
+		return keyHolder.getKey().intValue();
 	}
 }

@@ -3,17 +3,17 @@ package com.example.form;
 import java.util.List;
 
 public class AddItemToShoppingCartForm {
-	private String orderItemId;
+	private String itemId;
 	private String size;
 	private String quantity;
 	private List<String> toppingList;
 
-	public String getOrderItemId() {
-		return orderItemId;
+	public String getItemId() {
+		return itemId;
 	}
 
-	public void setOrderItemId(String orderItemId) {
-		this.orderItemId = orderItemId;
+	public void setItemId(String itemId) {
+		this.itemId = itemId;
 	}
 
 	public String getSize() {
@@ -42,7 +42,7 @@ public class AddItemToShoppingCartForm {
 
 	@Override
 	public String toString() {
-		return "AddItemToShoppingCartForm [orderItemId=" + orderItemId + ", size=" + size + ", quantity=" + quantity
+		return "AddItemToShoppingCartForm [orderItemId=" + itemId + ", size=" + size + ", quantity=" + quantity
 				+ ", toppingList=" + toppingList + "]";
 	}
 }

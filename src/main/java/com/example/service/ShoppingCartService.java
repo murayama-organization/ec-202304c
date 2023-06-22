@@ -11,8 +11,11 @@ import com.example.domain.Order;
 import com.example.domain.OrderItem;
 import com.example.domain.OrderTopping;
 import com.example.domain.Topping;
+import com.example.form.AddItemToShoppingCartForm;
 import com.example.repository.ItemRepository;
+import com.example.repository.OrderItemRepository;
 import com.example.repository.OrderRepository;
+import com.example.repository.OrderToppingRepository;
 import com.example.repository.ToppingRepository;
 
 @Service
@@ -21,6 +24,10 @@ public class ShoppingCartService {
 	private final Integer STATUS = 0;// 注文前
 	@Autowired
 	private OrderRepository orderRepository;
+	@Autowired
+	private OrderItemRepository orderItemRepository;
+	@Autowired
+	private OrderToppingRepository orderToppingRepository;
 	@Autowired
 	public ItemRepository itemRepository;
 	@Autowired
@@ -49,8 +56,33 @@ public class ShoppingCartService {
 		orderRepository.updateId(noLogingOrder.getUserId(), userId);
 	}
 
-	public void addItemToShoppingCart() {
-
+	public void addItemToShoppingCart(AddItemToShoppingCartForm form, Integer sessionOrUserId) {
+		// orderがない場合Orderを作る
+		Order order = orderRepository.findByUserIdAndStatus(sessionOrUserId, 0);
+		Integer orderId = null;
+		if (order == null) {
+			order = new Order();
+			order.setUserId(sessionOrUserId);
+			order.setStatus(0);
+			order.setTotalPrice(0);
+			;
+			orderId = orderRepository.insert(order);
+		} else {
+			orderId = order.getId();
+		}
+		// OrderItemオブジェクトの設定
+		OrderItem orderItem = new OrderItem();
+		orderItem.setItemId(Integer.valueOf(form.getItemId()));
+		orderItem.setOrderId(orderId);
+		orderItem.setQuantity(Integer.valueOf(form.getQuantity()));
+		orderItem.setSize(form.getSize().charAt(0));
+		Integer orderItemId = orderItemRepository.insert(orderItem);
+		for (String toppingId : form.getToppingList()) {
+			OrderTopping orderTopping = new OrderTopping();
+			orderTopping.setToppingId(Integer.valueOf(toppingId));
+			orderTopping.setOrderItemId(orderItemId);
+			orderToppingRepository.insert(orderTopping);
+		}
 	}
 
 	public void removeItemFromShoppingCart(Integer orderItemId) {

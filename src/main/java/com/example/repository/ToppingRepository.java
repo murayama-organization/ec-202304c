@@ -46,4 +46,5 @@ public class ToppingRepository {
 		Topping topping = template.queryForObject(sql, param, TOPPING_ROW_MAPPER);
 		return topping;
 	}
+
 }
