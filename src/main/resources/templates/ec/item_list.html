@@ -31,16 +31,25 @@
         <form method="get" class="search-form" action="item_list.html" th:action="@{/show-item/show-item-list}">
           <input list="item-name" type="text" name="name" class="search-name-input" th:value="${name}" />
           <datalist id="item-name">
-            <option th:each="item:${itemList}" th:value="${item.name}">
+            <option th:each="item:${itemList}" th:value="${item.name}"></option>
           </datalist>
+
           <button class="btn search-btn" type="submit">
             <span>検　索</span>
           </button>
         </form>
+        
+        <div class="input-field col s12">
+          <select class="browser-default">
+            <option value="low">価格の安い順</option>
+            <option value="hight">価格の高い順</option>
+          </select>
+        </div>
+        
         <div th:if="${message}" th:text="${message}"></div>
       </div>
     </div>
-
+    
     <!-- item list -->
     <div class="item-wrapper">
       <div class="container">
