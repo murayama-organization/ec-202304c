@@ -34,9 +34,17 @@ public class ItemRepository {
 	 * 
 	 * @return 全商品一覧(商品が存在しない場合はサイズ0件の商品一覧を返します)
 	 */
-	public List<Item> findAll() {
-		String sql = "SELECT id,name,description,price_m,price_l,image_path,deleted FROM items ORDER BY price_m,id;";
-		List<Item> itemList = template.query(sql, ITEM_ROW_MAPPER);
+	public List<Item> findAll(String line) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT id,name,description,price_m,price_l,image_path,deleted FROM items ORDER BY ");
+		if ("low".equals(line)) {
+			sql.append("price_m ASC, id");
+		} else if ("high".equals(line)) {
+			sql.append("price_m DESC ,id");
+		} else if ("initi".equals(line)) {
+			sql.append("name, id");
+		}
+		List<Item> itemList = template.query(sql.toString(), ITEM_ROW_MAPPER);
 		return itemList;
 	}
 
