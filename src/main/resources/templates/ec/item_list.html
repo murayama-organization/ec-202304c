@@ -24,36 +24,32 @@
     <title>ラクラクアロハ</title>
   </head>
   <body>
-    <header>
-      <div class="container">
-        <div class="header">
-          <div class="header-left">
-            <a href="top.html">
-              <img class="logo" th:src="@{/img/header_logo.png}" />
-            </a>
-          </div>
-
-          <div class="header-right">
-            <a href="item_list.html" th:href="@{/show-item/show-item-list}">商品一覧</a>
-            <a href="register_user.html" th:href="@{/register-user/to-register}">会員登録</a>
-            <a href="cart_list.html" th:href="@{/shopping-cart/show-cart}"> <i class="fas fa-shopping-cart"> </i>カート </a>
-            <a href="login.html" class="login" th:href="@{/login-user/to-login}"> <i class="fas fa-sign-in-alt"></i>ログイン </a>
-
-            <a href="order_history.html">注文履歴</a>
-          </div>
-        </div>
-      </div>
-    </header>
+    <div th:insert="global/header::frag_header">ヘッダー</div>
     <!-- search form -->
     <div class="search-wrapper">
       <div class="container">
         <form method="get" class="search-form" action="item_list.html" th:action="@{/show-item/show-item-list}">
-          <input type="text" name="name" class="search-name-input" th:value="${name}" />
+          <input list="item-name" type="text" name="name" class="search-name-input" th:value="${name}" />
+          <datalist id="item-name">
+            <option th:each="item:${itemList}" th:value="${item.name}"></option>
+          </datalist>
 
           <button class="btn search-btn" type="submit">
             <span>検　索</span>
           </button>
         </form>
+
+        <div class="input-field col s12">
+          <form class="change-line" action="item_list.html" th:action="@{/show-item/show-item-list}">
+            <select class="browser-default" id="price_line" name="line">
+              <th:block th:each="line:${lineMap}">
+                <option th:if="${line.getKey().equals(linename)}" th:value="${line.getKey()}" th:text="${line.getValue()}" selected></option>
+                <option th:unless="${line.getKey().equals(linename)}" th:value="${line.getKey()}" th:text="${line.getValue()}"></option>
+              </th:block>
+            </select>
+          </form>
+        </div>
+
         <div th:if="${message}" th:text="${message}"></div>
       </div>
     </div>
@@ -75,13 +71,29 @@
       </div>
     </div>
 
-    <footer>
-      <div class="container">
-        <img th:src="@{/img/header_logo.png}" />
-        <p>アロハな気分をあなたにお届け！</p>
-      </div>
-    </footer>
+    <div th:insert="global/footer::frag_footer">フッター</div>
+
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <!-- paginathing.min.js -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/alfrcr/paginathing/dist/paginathing.min.js"></script>
+    <script>
+      jQuery(document).ready(function ($) {
+        $(".items").paginathing({
+          perPage: 6,
+          prevText: "前へ",
+          nextText: "次へ",
+        });
+      });
+    </script>
+    <script>
+      $("#price_line").on("change", function () {
+        let form = document.querySelector(".change-line");
+        form.line.value = $("#price_line").val();
+        form.submit();
+      });
+    </script>
   </body>
 </html>

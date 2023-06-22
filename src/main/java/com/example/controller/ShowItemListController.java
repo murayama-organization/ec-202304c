@@ -1,6 +1,8 @@
 package com.example.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,19 +31,28 @@ public class ShowItemListController {
 	 * 
 	 * @param model モデル
 	 * @param name  商品名
+	 * @param line  並び替え名
 	 * @return 商品一覧画面
 	 */
 	@GetMapping("/show-item-list")
-	public String showItemList(Model model, String name) {
-		List<Item> itemList = showItemListService.searchByName(name);
+	public String showItemList(Model model, String name, String line) {
+		List<Item> itemList = showItemListService.searchByName(name, line);
 		if (itemList.size() == 0) {
-			itemList = showItemListService.showItemList();
+			itemList = showItemListService.showItemList(line);
 			model.addAttribute("message", "該当する商品がありません");
 		}
 		if (itemList.size() == 0) {
 			model.addAttribute("message", "商品は1件も存在しません");
 		}
+
+		Map<String, String> lineMap = new HashMap<>();
+		lineMap.put("initi", "名前順");
+		lineMap.put("low", "価格の安い順");
+		lineMap.put("high", "価格の高い順");
+		model.addAttribute("lineMap", lineMap);
+
 		model.addAttribute("itemList", itemList);
+		model.addAttribute("linename", line);
 		return "ec/item_list";
 	}
 }
