@@ -7,17 +7,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <!-- Import Font Wesome -->
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/common.css" />
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-    <link rel="stylesheet" href="css/register_user.css" />
-    <link rel="stylesheet" href="css/login.css" />
-    <link rel="stylesheet" href="css/item_list.css" />
-    <link rel="stylesheet" href="css/item_detail.css" />
-    <link rel="stylesheet" href="css/cart_list.css" />
-    <link rel="stylesheet" href="css/order_confirm.css" />
-    <link rel="stylesheet" href="css/order_finished.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" th:href="@{/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/css/header.css}" />
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
+    <link rel="stylesheet" th:href="@{/css/register_user.css}" />
+    <link rel="stylesheet" th:href="@{/css/login.css}" />
+    <link rel="stylesheet" th:href="@{/css/item_list.css}" />
+    <link rel="stylesheet" th:href="@{/css/item_detail.css}" />
+    <link rel="stylesheet" th:href="@{/css/cart_list.css}" />
+    <link rel="stylesheet" th:href="@{/css/order_confirm.css}" />
+    <link rel="stylesheet" th:href="@{/css/order_finished.css}" />
+    <link rel="stylesheet" th:href="@{/css/responsive.css}" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,7 +29,7 @@
         <div class="header">
           <div class="header-left">
             <a href="top.html">
-              <img class="logo" src="img/header_logo.png" />
+              <img class="logo" th:src="@{/img/header_logo.png}" />
             </a>
           </div>
 
@@ -63,7 +63,9 @@
       <div class="container">
         <div class="items">
           <div class="item" th:each="item:${itemList}">
-            <div class="item-icon"><img src="img/1.jpg" th:src="@{/img/} + ${item.imagePath}" /></div>
+            <div class="item-icon">
+              <a th:href="@{/show-detail/show-item-detail?itemId=} + ${item.id}"><img src="img/1.jpg" th:src="@{/img/} + ${item.imagePath}" /></a>
+            </div>
             <a href="item_detail.html" th:href="@{/show-detail/show-item-detail?itemId=} + ${item.id}"><span th:text="${item.name}">ハワイアンパラダイス</span></a
             ><br />
             <span class="price">Ｍ</span><span th:text="${#numbers.formatInteger(item.priceM,0,'COMMA')}">1,380</span>円(税抜)<br />
@@ -75,7 +77,7 @@
 
     <footer>
       <div class="container">
-        <img src="img/header_logo.png" />
+        <img th:src="@{/img/header_logo.png}" />
         <p>アロハな気分をあなたにお届け！</p>
       </div>
     </footer>

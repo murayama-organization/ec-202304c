@@ -7,17 +7,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <!-- Import Font Wesome -->
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/common.css" />
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-    <link rel="stylesheet" href="css/register_user.css" />
-    <link rel="stylesheet" href="css/login.css" />
-    <link rel="stylesheet" href="css/item_list.css" />
-    <link rel="stylesheet" href="css/item_detail.css" />
-    <link rel="stylesheet" href="css/cart_list.css" />
-    <link rel="stylesheet" href="css/order_confirm.css" />
-    <link rel="stylesheet" href="css/order_finished.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" th:href="@{/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/css/header.css}" />
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
+    <link rel="stylesheet" th:href="@{/css/register_user.css}" />
+    <link rel="stylesheet" th:href="@{/css/login.css}" />
+    <link rel="stylesheet" th:href="@{/css/item_list.css}" />
+    <link rel="stylesheet" th:href="@{/css/item_detail.css}" />
+    <link rel="stylesheet" th:href="@{/css/cart_list.css}" />
+    <link rel="stylesheet" th:href="@{/css/order_confirm.css}" />
+    <link rel="stylesheet" th:href="@{/css/order_finished.css}" />
+    <link rel="stylesheet" th:href="@{/css/responsive.css}" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,7 +29,7 @@
         <div class="header">
           <div class="header-left">
             <a href="top.html">
-              <img class="logo" src="img/header_logo.png" />
+              <img class="logo" th:src="@{/img/header_logo.png}" />
             </a>
           </div>
 
@@ -58,12 +58,12 @@
             <div class="item-hedding">サイズ</div>
             <div>
               <label>
-                <input class="size" id="size-m" name="size" type="radio" checked="checked" />
-                <span> &nbsp;<span class="price">Ｍ</span>&nbsp;&nbsp;<span th:text="${#numbers.formatInteger(item.priceM,0,'COMMA')}">1,380</span>円(税抜)</span>
+                <input class="size" id="size-m" name="size" type="radio" checked="checked" value="M" />
+                <span> &nbsp;<span class="price">Ｍ</span>&nbsp;&nbsp;<span th:text="${#numbers.formatInteger(item.priceM,0,'COMMA')}" id="priceM">1,380</span>円(税抜)</span>
               </label>
               <label>
-                <input class="size" id="size-l" name="size" type="radio" />
-                <span> &nbsp;<span class="price">Ｌ</span>&nbsp;&nbsp;<span th:text="${#numbers.formatInteger(item.priceL,0,'COMMA')}">2,380</span>円(税抜)</span>
+                <input class="size" id="size-l" name="size" type="radio" value="L" />
+                <span> &nbsp;<span class="price">Ｌ</span>&nbsp;&nbsp;<span th:text="${#numbers.formatInteger(item.priceL,0,'COMMA')}" id="priceL">2,380</span>円(税抜)</span>
               </label>
             </div>
           </div>
@@ -72,9 +72,9 @@
               トッピング：&nbsp;1つにつき
               <span>&nbsp;Ｍ&nbsp;</span>&nbsp;&nbsp;200円(税抜) <span>&nbsp;Ｌ</span>&nbsp;&nbsp;300円(税抜)
             </div>
-            <div>
+            <div id="topping">
               <label class="item-topping" th:each="topping:${item.toppingList}">
-                <input type="checkbox" class="topping_checkbox" />
+                <input type="checkbox" class="checkbox" />
                 <span th:text="${topping.name}">ハワイアンソルト</span>
               </label>
             </div>
@@ -83,7 +83,7 @@
             <div class="item-hedding item-hedding-quantity">数量</div>
             <div class="item-quantity-selectbox">
               <div class="input-field col s12">
-                <select class="browser-default">
+                <select class="browser-default" id="num">
                   <option value="" disabled selected>選択して下さい</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -102,7 +102,7 @@
             </div>
           </div>
           <div class="row item-total-price">
-            <span>この商品金額：38,000 円(税抜)</span>
+            <span>この商品金額：<span id="totalprice"></span> 円(税抜)</span>
           </div>
           <div class="row item-cart-btn">
             <form th:action="@{/shopping-cart/add-item}" method="post">
@@ -119,11 +119,13 @@
     <!-- end top-wrapper -->
     <footer>
       <div class="container">
-        <img src="img/header_logo.png" />
+        <img th:src="@{/img/header_logo.png}" />
         <p>アロハな気分をあなたにお届け！</p>
       </div>
     </footer>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script th:src="@{/js/list_detail.js}"></script>
   </body>
 </html>

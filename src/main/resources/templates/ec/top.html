@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ラクラクアロハ</title>
-    <link rel="stylesheet" href="css/common.css" />
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-    <link rel="stylesheet" href="css/top.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" th:href="@{/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/css/header.css}" />
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
+    <link rel="stylesheet" th:href="@{/css/top.css}" />
+    <link rel="stylesheet" th:href="@{/css/responsive.css}" />
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
   </head>
   <body>
@@ -17,7 +17,7 @@
         <div class="header">
           <div class="header-left">
             <a href="top.html">
-              <img class="logo" src="img/header_logo.png" />
+              <img class="logo" th:src="@{/img/header_logo.png}" />
             </a>
           </div>
 
@@ -42,7 +42,7 @@
         <p>日本にいながらアロハな気分をあなたにお届け！</p>
         <p>ラクラクアロハは自宅にハワイアン料理がデリバリーで届くハワイアンECサイトです。</p>
         <div class="btn-wrapper">
-          <a href="register_user.html" class="btn signup">会員登録</a>
+          <a href="register_user.html" th:href="@{/register-user/to-register}" class="btn signup">会員登録</a>
           <p>or</p>
           <a href="#" class="btn facebook"><i class="fab fa-facebook"></i>Facebookで登録</a>
           <a href="#" class="btn twitter"><i class="fab fa-twitter"></i>Twitterで登録</a>
@@ -58,28 +58,28 @@
         <div class="top-items">
           <div class="top-item">
             <div class="top-item-icon">
-              <img src="img/1.jpg" />
+              <img th:src="@{/img/1.jpg}" />
               <p>ハワイアン料理</p>
             </div>
             <p class="text-contents">アロハテーブルやウルフギャング、田中オブ東京などのハワイの有名店で修行を積んだ一流シェフによる本格的なハワイアン料理が家にいてもお手軽に楽しむことができます。</p>
           </div>
           <div class="top-item">
             <div class="top-item-icon">
-              <img src="img/2.jpg" />
+              <img th:src="@{/img/2.jpg}" />
               <p>スイーツも充実</p>
             </div>
             <p class="text-contents">アイランドビンテージコーヒーやボガーツカフェのアサイボウルはもちろんのこと、最近流行りのバナンのソフトクリーム、エッグスンシングスのふわふわパンケーキなど有名店のスイーツも充実しています。</p>
           </div>
           <div class="top-item">
             <div class="top-item-icon">
-              <img src="img/14.jpg" />
+              <img th:src="@{/img/14.jpg}" />
               <p>アルコールも豊富</p>
             </div>
             <p class="text-contents">ハワイといえばビーチでマイタイ！コナブリューイングのハワイアンコナビールなどハワイでしか飲めないアルコールも豊富にあります。</p>
           </div>
           <div class="top-item">
             <div class="top-item-icon">
-              <img src="img/13.jpg" />
+              <img th:src="@{/img/13.jpg}" />
               <p>ホテル創作料理</p>
             </div>
             <p class="text-contents">シェラトンワイキキ、ロイヤルハワイアン、モアナサーフライダー、アウラニに入っているレストランの創作料理も「ラクラクアロハ」なら気軽に注文できます。</p>
@@ -100,7 +100,7 @@
 
     <footer>
       <div class="container">
-        <img src="img/header_logo.png" />
+        <img th:src="@{/img/header_logo.png}" />
         <p>アロハな気分をあなたにお届け！</p>
       </div>
     </footer>
