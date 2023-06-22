@@ -30,8 +30,9 @@ public class ItemRepository {
 	private NamedParameterJdbcTemplate template;
 
 	/**
-	 * 商品一覧情報を値段の安い順で取得します.
+	 * 商品一覧情報を任意の順で取得します.(価格の安い順、高い順、名前の昇順)
 	 * 
+	 * @param line 並び替え名
 	 * @return 全商品一覧(商品が存在しない場合はサイズ0件の商品一覧を返します)
 	 */
 	public List<Item> findAll(String line) {

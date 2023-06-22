@@ -24,6 +24,7 @@ public class ShowItemListService {
 	/**
 	 * 商品情報を全件取得します.
 	 * 
+	 * @param line 並び替え名
 	 * @return 商品情報一覧
 	 */
 	public List<Item> showItemList(String line) {
@@ -38,7 +39,7 @@ public class ShowItemListService {
 	 * @param name 名前
 	 * @return 商品情報一覧
 	 */
-	public List<Item> searchByName(String name,String line) {
+	public List<Item> searchByName(String name, String line) {
 		if (name == null) {
 			List<Item> itemList = itemRepository.findAll(line);
 			return itemList;

@@ -31,6 +31,7 @@ public class ShowItemListController {
 	 * 
 	 * @param model モデル
 	 * @param name  商品名
+	 * @param line  並び替え名
 	 * @return 商品一覧画面
 	 */
 	@GetMapping("/show-item-list")
@@ -43,13 +44,13 @@ public class ShowItemListController {
 		if (itemList.size() == 0) {
 			model.addAttribute("message", "商品は1件も存在しません");
 		}
-		
-		Map<String,String> lineMap = new HashMap<>();
-		lineMap.put("initi","名前順");
-		lineMap.put("low","価格の安い順");
-		lineMap.put("high","価格の高い順");
-		model.addAttribute("lineMap",lineMap);
-		
+
+		Map<String, String> lineMap = new HashMap<>();
+		lineMap.put("initi", "名前順");
+		lineMap.put("low", "価格の安い順");
+		lineMap.put("high", "価格の高い順");
+		model.addAttribute("lineMap", lineMap);
+
 		model.addAttribute("itemList", itemList);
 		model.addAttribute("linename", line);
 		return "ec/item_list";
