@@ -30,11 +30,9 @@ public class OrderRepository {
 		int beforeOrderItemId = 0;
 		boolean loopCount = true;
 		OrderItem orderItem = null;
-		System.out.println("==========" + loopCount + "================");
 		while (rs.next()) {
 			// 初回のみOrderを詰める
 			if (loopCount) {
-				System.out.println("==========" + loopCount + "================");
 				// orderテーブルの項目
 				order.setId(rs.getInt("order_id"));
 				order.setUserId(rs.getInt("user_id"));
@@ -65,6 +63,7 @@ public class OrderRepository {
 				orderToppingList = new ArrayList<OrderTopping>();
 				orderItem.setOrderToppingList(orderToppingList);
 				orderItemList.add(orderItem);
+				beforeOrderItemId = nowOrderItemId;
 			}
 			// 注文商品だけあって、toppingがない場合はOrderToppingオブジェクトは作らない
 			if (rs.getInt("order_topping_id") != 0) {
@@ -92,11 +91,10 @@ public class OrderRepository {
 		sb.append("LEFT OUTER JOIN order_toppings as oTopping on oItem.id = oTopping.order_item_id ");
 		sb.append("WHERE user_id = :userId AND status=:status;");
 
-		System.out.println(sb.toString());
 		SqlParameterSource param = new MapSqlParameterSource().addValue("userId", userId).addValue("status", status);
 
 		List<Order> orderList = template.query(sb.toString(), param, ORDER_RESULT_SET_EXTRACTOR);
-		if (orderList.size() == 0) {
+		if (orderList.get(0).getId() == null) {
 			return null;
 		} else {
 			return orderList.get(0);

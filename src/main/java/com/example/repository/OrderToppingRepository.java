@@ -19,7 +19,7 @@ public class OrderToppingRepository {
 		// インサート処理
 		StringBuilder sb = new StringBuilder();
 		sb.append("INSERT INTO order_toppings(topping_id , order_item_id) ");
-		sb.append("VALUES(:topping_id,:order_item_id);");
+		sb.append("VALUES(:toppingId,:orderItemId);");
 		template.update(sb.toString(), param);
 	}
 }

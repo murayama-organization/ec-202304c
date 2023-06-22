@@ -2,9 +2,12 @@ package com.example.form;
 
 import java.util.List;
 
+import jakarta.validation.constraints.Pattern;
+
 public class AddItemToShoppingCartForm {
 	private String itemId;
 	private String size;
+	@Pattern(regexp = "/^([+-])?([0-9]+)(\\.)?([0-9]+)?$/", message = "数量を選択")
 	private String quantity;
 	private List<String> toppingList;
 
@@ -42,7 +45,7 @@ public class AddItemToShoppingCartForm {
 
 	@Override
 	public String toString() {
-		return "AddItemToShoppingCartForm [orderItemId=" + itemId + ", size=" + size + ", quantity=" + quantity
+		return "AddItemToShoppingCartForm [itemId=" + itemId + ", size=" + size + ", quantity=" + quantity
 				+ ", toppingList=" + toppingList + "]";
 	}
 }

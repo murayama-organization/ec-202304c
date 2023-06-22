@@ -32,6 +32,10 @@ public class ShowItemDetailController {
 	public String showItemDetail(Model model, Integer itemId) {
 		Item item = showItemDetailService.showItemDetail(itemId);
 		model.addAttribute("item", item);
+		@SuppressWarnings("unused")
+		String qerr = (String) model.getAttribute("qerr");
+		System.out.println(qerr);
+		model.addAttribute("qerr", qerr);
 		return "ec/item_detail";
 	}
 }

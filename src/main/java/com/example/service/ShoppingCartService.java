@@ -33,10 +33,14 @@ public class ShoppingCartService {
 	@Autowired
 	public ToppingRepository toppingRepository;
 
-	public List<OrderItem> showShoppingCartContents(Integer sessionOrUserId) {
+	public Order showShoppingCartContents(Integer sessionOrUserId) {
 		// TEST用
-		sessionOrUserId = 1111;
+//		sessionOrUserId = 1111;
 		Order order = orderRepository.findByUserIdAndStatus(sessionOrUserId, STATUS);
+
+		if (order == null) {
+			return new Order();
+		}
 		List<OrderItem> cartContent = order.getOrderItemList();
 		for (OrderItem orderItem : cartContent) {
 			Item item = itemRepository.load(orderItem.getItemId());
@@ -48,24 +52,27 @@ public class ShoppingCartService {
 			}
 			orderItem.setItem(item);
 		}
-		return cartContent;
+		order.setOrderItemList(cartContent);
+		return order;
 	}
 
 	public void updateUserId(Integer userId, Integer sessionId) {
 		Order noLogingOrder = orderRepository.findByUserIdAndStatus(sessionId, 0);
-		orderRepository.updateId(noLogingOrder.getUserId(), userId);
+		if (noLogingOrder != null) {
+			orderRepository.updateId(noLogingOrder.getUserId(), userId);
+		}
 	}
 
 	public void addItemToShoppingCart(AddItemToShoppingCartForm form, Integer sessionOrUserId) {
 		// orderがない場合Orderを作る
 		Order order = orderRepository.findByUserIdAndStatus(sessionOrUserId, 0);
+		System.out.println("order:::::" + order);
 		Integer orderId = null;
 		if (order == null) {
 			order = new Order();
 			order.setUserId(sessionOrUserId);
 			order.setStatus(0);
 			order.setTotalPrice(0);
-			;
 			orderId = orderRepository.insert(order);
 		} else {
 			orderId = order.getId();
@@ -77,6 +84,10 @@ public class ShoppingCartService {
 		orderItem.setQuantity(Integer.valueOf(form.getQuantity()));
 		orderItem.setSize(form.getSize().charAt(0));
 		Integer orderItemId = orderItemRepository.insert(orderItem);
+		List<String> toppingList = form.getToppingList();
+		if (toppingList == null) {
+			return;
+		}
 		for (String toppingId : form.getToppingList()) {
 			OrderTopping orderTopping = new OrderTopping();
 			orderTopping.setToppingId(Integer.valueOf(toppingId));
@@ -86,6 +97,6 @@ public class ShoppingCartService {
 	}
 
 	public void removeItemFromShoppingCart(Integer orderItemId) {
-
+		orderItemRepository.deleteById(orderItemId);
 	}
 }

@@ -11,7 +11,6 @@ import java.util.List;
  *
  */
 public class Order {
-	private final double TAX_RATE = 0.1;
 	/** 主キー（ID） */
 	private Integer id;
 	/** ユーザの主キー（ID） */
@@ -47,13 +46,12 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [TAX_RATE=" + TAX_RATE + ", id=" + id + ", userId=" + userId + ", status=" + status
-				+ ", totalPrice=" + totalPrice + ", orderDate=" + orderDate + ", destinationName=" + destinationName
-				+ ", destinationEmail=" + destinationEmail + ", destinationZipcode=" + destinationZipcode
-				+ ", destinationPref=" + destinationPref + ", destinationMunicipalities=" + destinationMunicipalities
-				+ ", destinationAddress=" + destinationAddress + ", destinationTel=" + destinationTel
-				+ ", deliveryTime=" + deliveryTime + ", paymentMethod=" + paymentMethod + ", user=" + user
-				+ ", orderItemList=" + orderItemList + "]";
+		return "Order [id=" + id + ", userId=" + userId + ", status=" + status + ", totalPrice=" + totalPrice
+				+ ", orderDate=" + orderDate + ", destinationName=" + destinationName + ", destinationEmail="
+				+ destinationEmail + ", destinationZipcode=" + destinationZipcode + ", destinationPref="
+				+ destinationPref + ", destinationMunicipalities=" + destinationMunicipalities + ", destinationAddress="
+				+ destinationAddress + ", destinationTel=" + destinationTel + ", deliveryTime=" + deliveryTime
+				+ ", paymentMethod=" + paymentMethod + ", user=" + user + ", orderItemList=" + orderItemList + "]";
 	}
 
 	public Integer getId() {
@@ -185,7 +183,8 @@ public class Order {
 	}
 
 	public double getTAX_RATE() {
-		return TAX_RATE;
+		double tax_rate = 0.1;
+		return tax_rate;
 	}
 
 	/**
@@ -200,7 +199,7 @@ public class Order {
 			basePrice += orderItem.getSubTotal();
 		}
 		// 小数点以下切り捨て
-		int tax = (int) (basePrice * TAX_RATE);
+		int tax = (int) (basePrice * this.getTAX_RATE());
 		return tax;
 	}
 
