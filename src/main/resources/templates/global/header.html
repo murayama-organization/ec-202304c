@@ -24,26 +24,27 @@
     <title>ラクラクアロハ</title>
   </head>
   <body>
-    <div th:insert="global/header::frag_header">ヘッダー</div>
-    <div class="top-wrapper">
+    <header th:fragment="frag_header">
       <div class="container">
-        <h1 class="page-title">決済が完了しました！</h1>
-        <div class="order-finished-thanks-message">
-          <p>この度はご注文ありがとうございます。</p>
-          <p>お支払い先は、お送りしたメールに記載してありますのでご確認ください。</p>
-          <p>メールが届かない場合は「注文履歴」からご確認ください。</p>
-        </div>
-        <div class="row order-finished-btn">
-          <button class="btn" type="button" onclick="location.href='item_list.html'">
-            <span>トップ画面を表示する</span>
-          </button>
+        <div class="header">
+          <div class="header-left">
+            <a href="top.html">
+              <img class="logo" th:src="@{/img/header_logo.png}" />
+            </a>
+          </div>
+
+          <div class="header-right">
+            <a href="item_list.html" th:href="@{/show-item/show-item-list}">商品一覧</a>
+            <a href="register_user.html" th:href="@{/register-user/to-register}">会員登録</a>
+            <a href="cart_list.html" th:href="@{/shopping-cart/show-cart}"> <i class="fas fa-shopping-cart"> </i>カート </a>
+            <a href="login.html" class="login" th:href="@{/login-user/to-login}"> <i class="fas fa-sign-in-alt"></i>ログイン </a>
+
+            <a href="order_history.html">注文履歴</a>
+          </div>
         </div>
       </div>
-      <!-- end container -->
-    </div>
-    <!-- end top-wrapper -->
-    <div th:insert="global/footer::frag_footer">フッター</div>
-    <!-- Compiled and minified JavaScript -->
+    </header>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>

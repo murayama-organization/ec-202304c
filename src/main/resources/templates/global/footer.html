@@ -19,31 +19,18 @@
     <link rel="stylesheet" th:href="@{/css/order_finished.css}" />
     <link rel="stylesheet" th:href="@{/css/responsive.css}" />
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Insert title here</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ラクラクアロハ</title>
   </head>
   <body>
-    <div th:insert="global/header::frag_header">ヘッダー</div>
-    <div class="top-wrapper">
+    <footer th:fragment="frag_footer">
       <div class="container">
-        <h1 class="page-title">決済が完了しました！</h1>
-        <div class="order-finished-thanks-message">
-          <p>この度はご注文ありがとうございます。</p>
-          <p>お支払い先は、お送りしたメールに記載してありますのでご確認ください。</p>
-          <p>メールが届かない場合は「注文履歴」からご確認ください。</p>
-        </div>
-        <div class="row order-finished-btn">
-          <button class="btn" type="button" onclick="location.href='item_list.html'">
-            <span>トップ画面を表示する</span>
-          </button>
-        </div>
+        <img th:src="@{/img/header_logo.png}" />
+        <p>アロハな気分をあなたにお届け！</p>
       </div>
-      <!-- end container -->
-    </div>
-    <!-- end top-wrapper -->
-    <div th:insert="global/footer::frag_footer">フッター</div>
-    <!-- Compiled and minified JavaScript -->
+    </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>
