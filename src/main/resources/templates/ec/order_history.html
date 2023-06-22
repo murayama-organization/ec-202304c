@@ -14,13 +14,11 @@
     <link rel="stylesheet" th:href="@{/css/login.css}" />
     <link rel="stylesheet" th:href="@{/css/item_list.css}" />
     <link rel="stylesheet" th:href="@{/css/item_detail.css}" />
-    <!-- <link rel="stylesheet" th:href="@{/css/cart_list.css}" /> -->
-    <link rel="stylesheet" href="../../static/css/cart_list.css" />
-    <!-- <link rel="stylesheet" th:href="@{/css/order_confirm.css}" /> -->
-    <link rel="stylesheet" href="../../static/css/order_confirm.css" />
+    <link rel="stylesheet" th:href="@{/css/cart_list.css}" />
+    <link rel="stylesheet" th:href="@{/css/order_confirm.css}" />
     <link rel="stylesheet" th:href="@{/css/order_finished.css}" />
-    <!-- <link rel="stylesheet" th:href="@{/css/order_finished.css}" /> -->
-    <link rel="stylesheet" href="../../static/css/order_history.css" />
+    <link rel="stylesheet" th:href="@{/css/order_history.css}" />
+    <link rel="stylesheet" th:href="@{/css/order_finished.css}" />
     <link rel="stylesheet" th:href="@{/css/responsive.css}" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -30,113 +28,115 @@
   <body>
     <div th:insert="global/header::frag_header">ヘッダー</div>
 
-    <div class="container">
-      <div class="row">
-        <div class="s12 m8 offset-m2">
-          <h2 class="order-history-title">注文履歴</h2>
-          <div class="card">
-            <div class="card-content">
-              <div class="card-title">
-                <div class="order-details">
-                  <div>
-                    <h5>配達日時: <span>2023年6月30日</span></h5>
-                    <h5>合計金額：<span>20,000円</span></h5>
-                  </div>
-                  <div>
-                    <h5>注文状況：<span>配達済</span></h5>
+    <div class="order-history-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="s12 m8 offset-m2">
+            <h2 class="order-history-title">注文履歴</h2>
+            <div class="card">
+              <div class="card-content">
+                <div class="card-title">
+                  <div class="order-details">
+                    <div>
+                      <h5>配達日時: <span>2023年6月30日</span></h5>
+                      <h5>合計金額：<span>20,000円</span></h5>
+                    </div>
+                    <div>
+                      <h5>注文状況：<span>配達済</span></h5>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <ul class="collapsible item-list">
-                <li>
-                  <div class="collapsible-header"><i class="material-icons">arrow_drop_down_circle</i>ハワイアンパラダイス</div>
+                <ul class="collapsible item-list">
+                  <li>
+                    <div class="collapsible-header"><i class="material-icons">arrow_drop_down_circle</i>ハワイアンパラダイス</div>
 
-                  <div class="collapsible-body">
-                    <div class="item-details">
-                      <div class="item-icon">
-                        <img src="../../static/img/1.jpg" />
-                      </div>
-                      <div class="item-info">
-                        <ul>
-                          <li>
-                            <h6>サイズ：<span>L</span></h6>
-                          </li>
-                          <li>
-                            <h6>個数：<span>1</span></h6>
-                          </li>
-                          <li>
-                            <h6>トッピング：</h6>
-                            <p>サラダ</p>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="item-price">
-                        <h5>小計</h5>
-                        <h5>2,800円</h5>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="collapsible-header"><i class="material-icons">arrow_drop_down_circle</i>ハワイアンパラダイス</div>
-                  <div class="collapsible-body">
-                    <div class="item-details">
-                      <div class="item-icon">
-                        <img src="../../static/img/1.jpg" />
-                      </div>
-                      <div>
-                        <ul>
-                          <li>
-                            <h6>サイズ：<span>L</span></h6>
-                          </li>
-                          <li>
-                            <h6>個数：<span>1</span></h6>
-                          </li>
-                          <li>
-                            <h6>トッピング：</h6>
-                            <p>サラダ</p>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="item-price">
-                        <h5>小計</h5>
-                        <h5>2,800円</h5>
+                    <div class="collapsible-body">
+                      <div class="item-details">
+                        <div class="item-icon">
+                          <img th:src="@{/img/1.jpg}" />
+                        </div>
+                        <div class="item-info">
+                          <ul>
+                            <li>
+                              <h6>サイズ：<span>L</span></h6>
+                            </li>
+                            <li>
+                              <h6>個数：<span>1</span></h6>
+                            </li>
+                            <li>
+                              <h6>トッピング：</h6>
+                              <p>サラダ</p>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="item-price">
+                          <h5>小計</h5>
+                          <h5>2,800円</h5>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="collapsible-header"><i class="material-icons">arrow_drop_down_circle</i>ハワイアンパラダイス</div>
-                  <div class="collapsible-body">
-                    <div class="item-details">
-                      <div class="item-icon">
-                        <img src="../../static/img/1.jpg" />
-                      </div>
-                      <div>
-                        <ul>
-                          <li>
-                            <h6>サイズ：<span>L</span></h6>
-                          </li>
-                          <li>
-                            <h6>個数：<span>1</span></h6>
-                          </li>
-                          <li>
-                            <h6>トッピング：</h6>
-                            <p>サラダ</p>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="item-price">
-                        <h5>小計</h5>
-                        <h5>2,800円</h5>
+                  </li>
+                  <li>
+                    <div class="collapsible-header"><i class="material-icons">arrow_drop_down_circle</i>ハワイアンパラダイス</div>
+                    <div class="collapsible-body">
+                      <div class="item-details">
+                        <div class="item-icon">
+                          <img th:src="@{/img/1.jpg}" />
+                        </div>
+                        <div>
+                          <ul>
+                            <li>
+                              <h6>サイズ：<span>L</span></h6>
+                            </li>
+                            <li>
+                              <h6>個数：<span>1</span></h6>
+                            </li>
+                            <li>
+                              <h6>トッピング：</h6>
+                              <p>サラダ</p>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="item-price">
+                          <h5>小計</h5>
+                          <h5>2,800円</h5>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="card-action">
-              <a href="#">注文を取り消す</a>
+                  </li>
+                  <li>
+                    <div class="collapsible-header"><i class="material-icons">arrow_drop_down_circle</i>ハワイアンパラダイス</div>
+                    <div class="collapsible-body">
+                      <div class="item-details">
+                        <div class="item-icon">
+                          <img th:src="@{/img/1.jpg}" />
+                        </div>
+                        <div>
+                          <ul>
+                            <li>
+                              <h6>サイズ：<span>L</span></h6>
+                            </li>
+                            <li>
+                              <h6>個数：<span>1</span></h6>
+                            </li>
+                            <li>
+                              <h6>トッピング：</h6>
+                              <p>サラダ</p>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="item-price">
+                          <h5>小計</h5>
+                          <h5>2,800円</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a href="#">注文を取り消す</a>
+              </div>
             </div>
           </div>
         </div>
@@ -148,7 +148,6 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!-- <script th:src="@{/js/order_history.js}"></script> -->
-    <script src="../../static/js/order_history.js"></script>
+    <script th:src="@{/js/order_history.js}"></script>
   </body>
 </html>

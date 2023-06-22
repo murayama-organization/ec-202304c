@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+.order-history-wrapper {
+  padding-top: 100px;
+}
+
 .order-history-title {
   text-align: center;
 }
