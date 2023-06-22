@@ -44,6 +44,8 @@ public class ItemRepository {
 			sql.append("price_m DESC ,id");
 		} else if ("initi".equals(line)) {
 			sql.append("name, id");
+		} else if (line == null) {
+			sql.append("name, id");
 		}
 		List<Item> itemList = template.query(sql.toString(), ITEM_ROW_MAPPER);
 		return itemList;

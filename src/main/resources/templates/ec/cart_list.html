@@ -44,7 +44,7 @@
                 <tr>
                   <td class="cart-item-name">
                     <div class="cart-item-icon">
-                      <img th:src="@{/img/1.jpg}" />
+                      <img th:src="@{/img/} + ${orderItem.item.imagePath}" />
                     </div>
                     <span th:text="${orderItem.item.name}">ハワイアンパラダイス</span>
                   </td>
@@ -64,7 +64,7 @@
                   </td>
                   <td>
                     <th:block th:each="element : ${orderPrice}">
-                      <div class="text-center" th:if="${orderItem.id == element.key}" th:text="${element.value}+'円'">3,280円</div>
+                      <div class="text-center" th:if="${orderItem.id == element.key}" th:text="${#numbers.formatInteger(element.value, 0,'COMMA') + '円'}">3,280円</div>
                     </th:block>
                   </td>
                   <td>
