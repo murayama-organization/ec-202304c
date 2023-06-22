@@ -105,10 +105,12 @@
             <span>この商品金額：38,000 円(税抜)</span>
           </div>
           <div class="row item-cart-btn">
-            <button class="btn" type="button" onclick="location.href='cart_list.html'">
-              <i class="material-icons left">add_shopping_cart</i>
-              <span>カートに入れる</span>
-            </button>
+            <form th:action="@{/shopping-cart/add-item}" method="post">
+              <button class="btn" type="submit">
+                <i class="material-icons left">add_shopping_cart</i>
+                <span>カートに入れる</span>
+              </button>
+            </form>
           </div>
         </div>
       </div>

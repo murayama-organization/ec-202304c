@@ -103,4 +103,11 @@ public class OrderRepository {
 			return orderList.get(0);
 		}
 	}
+
+	public void updateId(Integer sessionId, Integer userId) {
+		SqlParameterSource param = new MapSqlParameterSource().addValue("userId", userId).addValue("sessionId",
+				sessionId);
+		String updateSql = "UPDATE orders SET user_id=:userId WHERE user_id=:sessionId";
+		template.update(updateSql, param);
+	}
 }

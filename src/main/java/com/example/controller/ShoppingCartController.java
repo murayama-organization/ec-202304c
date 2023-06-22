@@ -4,11 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.OrderItem;
-import com.example.domain.OrderTopping;
 import com.example.domain.User;
 import com.example.form.AddItemToShoppingCartForm;
 import com.example.service.ShoppingCartService;
@@ -25,7 +26,7 @@ public class ShoppingCartController {
 	public ShoppingCartService cartService;
 
 	@GetMapping("/show-cart")
-	public String showCart() {
+	public String showCart(Model model) {
 		User user = (User) httpSession.getAttribute("currentUser");
 		Integer accessId = null;
 		if (user == null) {
@@ -34,19 +35,14 @@ public class ShoppingCartController {
 			accessId = user.getId();
 		}
 		List<OrderItem> showShoppingCartContents = cartService.showShoppingCartContents(accessId);
-		for (OrderItem item : showShoppingCartContents) {
-			item.setItem();
-			List<OrderTopping> orderToppingList = item.getOrderToppingList();
-			for (OrderTopping orderTopping : orderToppingList) {
-
-			}
-		}
+		System.out.println(showShoppingCartContents);
+		model.addAttribute("cartItem", showShoppingCartContents);
 		return "ec/cart_list";
 	}
 
-	@GetMapping("/add-item")
+	@PostMapping("/add-item")
 	public String addItem(AddItemToShoppingCartForm form) {
-		return null;
+		return "redirect:/shopping-cart/show-cart";
 	}
 
 }
