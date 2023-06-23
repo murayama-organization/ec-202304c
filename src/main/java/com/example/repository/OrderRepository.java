@@ -79,6 +79,30 @@ public class OrderRepository {
 	@Autowired
 	private NamedParameterJdbcTemplate template;
 
+	
+	/**
+	 * 主キーから注文情報を取得します.
+	 * 
+	 * @param orderId 注文の主キー
+	 * @return　注文
+	 */
+	public Order load(Integer orderId) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(
+				"SELECT orders.id as order_id, user_id,status, total_price, order_date,destination_name,destination_email, destination_zipcode,destination_pref,destination_municipalities,destination_address,destination_tel,delivery_time,payment_method,");
+		sb.append("oItem.id as order_item_id, item_id, order_id,quantity,size,");
+		sb.append("oTopping.id as order_topping_id, topping_id,order_item_id ");
+		sb.append("FROM orders ");
+		sb.append("LEFT OUTER JOIN order_items as oItem on order_id = oItem.order_id ");
+		sb.append("LEFT OUTER JOIN order_toppings as oTopping on oItem.id = oTopping.order_item_id ");
+		sb.append("WHERE order_id = :id;");
+		
+		SqlParameterSource param = new MapSqlParameterSource().addValue("id", orderId);
+		
+		List<Order> orderList = template.query(sb.toString(), param, ORDER_RESULT_SET_EXTRACTOR);
+		return orderList.get(0);
+	}
+	
 	public Order findByUserIdAndStatus(Integer userId, Integer status) {
 		// 検索
 		StringBuilder sb = new StringBuilder();
