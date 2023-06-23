@@ -1,5 +1,8 @@
 package com.example.controller;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,7 +38,14 @@ public class SendOrderController {
 	public String sendOrder(@Validated SendOrderForm form, Model model) {
 		Order order = sendOrderService.sendOrder(form);
 		BeanUtils.copyProperties(form, order);
-
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		SimpleDateFormat sdf = new SimpleDateFormat("kk");
+		String now = sdf.format(timestamp);
+		String delevery = form.getDeliveryTime();
+//		if(delevery-now<3) {
+//			
+//		}
+		
 		return "ec/order_finished";
 	}
 }
