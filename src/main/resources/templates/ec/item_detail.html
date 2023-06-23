@@ -35,62 +35,66 @@
             </div>
             <div class="item-intro" th:text="${item.description}">ハワイで取れる名産物でかつオーガニックな食料がふんだんに使われたローカルフーズです。健康志向の方に大人気の商品です。</div>
           </div>
-          <div class="row item-size">
-            <div class="item-hedding">サイズ</div>
-            <div>
-              <label>
-                <input class="size" id="size-m" name="size" type="radio" checked="checked" value="M" />
-                <span> &nbsp;<span class="price">Ｍ</span>&nbsp;&nbsp;<span th:text="${#numbers.formatInteger(item.priceM,0,'COMMA')}" id="priceM">1,380</span>円(税抜)</span>
-              </label>
-              <label>
-                <input class="size" id="size-l" name="size" type="radio" value="L" />
-                <span> &nbsp;<span class="price">Ｌ</span>&nbsp;&nbsp;<span th:text="${#numbers.formatInteger(item.priceL,0,'COMMA')}" id="priceL">2,380</span>円(税抜)</span>
-              </label>
-            </div>
-          </div>
-          <div class="row item-toppings">
-            <div class="item-hedding">
-              トッピング：&nbsp;1つにつき
-              <span>&nbsp;Ｍ&nbsp;</span>&nbsp;&nbsp;200円(税抜) <span>&nbsp;Ｌ</span>&nbsp;&nbsp;300円(税抜)
-            </div>
-            <div id="topping">
-              <label class="item-topping" th:each="topping:${item.toppingList}">
-                <input type="checkbox" class="checkbox" />
-                <span th:text="${topping.name}">ハワイアンソルト</span>
-              </label>
-            </div>
-          </div>
-          <div class="row item-quantity">
-            <div class="item-hedding item-hedding-quantity">数量</div>
-            <div class="item-quantity-selectbox">
-              <div class="input-field col s12">
-                <select class="browser-default" id="num">
-                  <option value="" disabled selected>選択して下さい</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                </select>
+          <form th:action="@{/shopping-cart/add-item}" method="post">
+            <input type="hidden" name="itemId" th:value="${item.id}" />
+            <div class="row item-size">
+              <div class="item-hedding">サイズ</div>
+              <div>
+                <label>
+                  <input class="size" id="size-m" name="size" type="radio" checked="checked" value="M" />
+                  <span> &nbsp;<span class="price">Ｍ</span>&nbsp;&nbsp;<span th:text="${#numbers.formatInteger(item.priceM,0,'COMMA')}" id="priceM">1,380</span>円(税抜)</span>
+                </label>
+                <label>
+                  <input class="size" id="size-l" name="size" type="radio" value="L" />
+                  <span> &nbsp;<span class="price">Ｌ</span>&nbsp;&nbsp;<span th:text="${#numbers.formatInteger(item.priceL,0,'COMMA')}" id="priceL">2,380</span>円(税抜)</span>
+                </label>
               </div>
             </div>
-          </div>
-          <div class="row item-total-price">
-            <span>この商品金額：<span id="totalprice"></span> 円(税抜)</span>
-          </div>
-          <div class="row item-cart-btn">
-            <button class="btn" type="button" onclick="location.href='cart_list.html'">
-              <i class="material-icons left">add_shopping_cart</i>
-              <span>カートに入れる</span>
-            </button>
-          </div>
+            <div class="row item-toppings">
+              <div class="item-hedding">
+                トッピング：&nbsp;1つにつき
+                <span>&nbsp;Ｍ&nbsp;</span>&nbsp;&nbsp;200円(税抜) <span>&nbsp;Ｌ</span>&nbsp;&nbsp;300円(税抜)
+              </div>
+              <div id="topping">
+                <label class="item-topping" th:each="topping:${item.toppingList}">
+                  <input type="checkbox" class="checkbox" name="toppingList" th:value="${topping.id}" />
+                  <span th:text="${topping.name}">ハワイアンソルト</span>
+                </label>
+              </div>
+            </div>
+            <div class="row item-quantity">
+              <div class="item-hedding item-hedding-quantity">数量</div>
+              <div class="item-quantity-selectbox">
+                <div class="input-field col s12">
+                  <div th:if="${qerr} " style="color: red" th:text="${qerr}">数量を選択してください</div>
+                  <select class="browser-default" id="num" name="quantity">
+                    <option value="" disabled selected placeholder="0">選択して下さい</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row item-total-price">
+              <span>この商品金額：<span id="totalprice"></span> 円(税抜)</span>
+            </div>
+            <div class="row item-cart-btn">
+              <button class="btn" type="submit">
+                <i class="material-icons left">add_shopping_cart</i>
+                <span>カートに入れる</span>
+              </button>
+            </div>
+          </form>
         </div>
       </div>
       <!-- end container -->

@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+.order-history-wrapper {
+  padding-top: 100px;
+}
+
+.order-history-title {
+  text-align: center;
+}
+
+.order-details {
+  display: flex;
+  justify-content: space-around;
+}
+
+.item-list {
+  margin-top: 40px;
+}
+
+.item-icon img {
+  display: block;
+  width: 250px;
+  height: 250px;
+  padding: 0;
+}
+
+.item-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-price {
+  text-align: center;
+}
