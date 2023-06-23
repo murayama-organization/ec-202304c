@@ -156,7 +156,7 @@ public class OrderRepository {
 	 * @param order  注文情報
 	 * @param status 状態
 	 */
-	public void updateStatus(Order order, String status) {
+	public void updateStatus(Order order, Integer status) {
 		String updateStatusSql = "UPDATE orders SET status=:status WHERE id=:id;";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("id", order.getId()).addValue("status", status);
 		template.update(updateStatusSql, param);
