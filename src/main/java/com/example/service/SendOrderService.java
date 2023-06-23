@@ -29,8 +29,7 @@ public class SendOrderService {
 	 * @return 注文情報
 	 */
 	public Order sendOrder(SendOrderForm form) {
-		List<Order> orderList = orderRepository.load(form.getOrderId());
-		Order order = orderList.get(0);
+		Order order = orderRepository.load(form.getOrderId());
 		Integer status = 0;
 		if ("1".equals(form.getPaymentMethod())) {
 			status = 1;
