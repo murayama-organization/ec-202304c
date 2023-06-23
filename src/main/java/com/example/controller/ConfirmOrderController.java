@@ -31,14 +31,14 @@ public class ConfirmOrderController {
 	@GetMapping("/to-confirm-order")
 	public String toConfirmOrder(Integer orderId, Model model) {
 		Order order = confirmOrderService.showOrder(orderId);
-		
+
 		System.out.println(order);
-		for(OrderItem orderItem : order.getOrderItemList()) {
+		for (OrderItem orderItem : order.getOrderItemList()) {
 			System.out.println(orderItem);
 		}
 
 		model.addAttribute("order", order);
-		
+
 		model.addAttribute("totalTax", order.getTax());
 		model.addAttribute("totalPrice", order.getCalcPrice());
 

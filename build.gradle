@@ -37,7 +37,6 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
     // CheckStyleプラグイン導入のため追加
     checkstyle 'com.puppycrawl.tools:checkstyle:9.1'
-
 }
 
 tasks.named('test') {
