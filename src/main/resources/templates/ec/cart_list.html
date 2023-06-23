@@ -87,11 +87,14 @@
             <div>消費税：<span th:text="${#numbers.formatInteger(totalTax, 0, 'COMMA')}"></span> 円</div>
             <div>ご注文金額合計：<span th:text="${#numbers.formatInteger(totalPrice, 0, 'COMMA')}"></span> 円 (税込)</div>
           </div>
-          <div class="row order-confirm-btn">
-            <button class="btn" type="button" onclick="location.href='order_confirm.html'">
-              <span>注文に進む</span>
-            </button>
-          </div>
+          <form action="order_confirm.html" th:action="@{/confirm-order/to-confirm-order}" method="get">
+            <input type="hidden" name="orderId" th:value="${order.id}">
+            <div class="row order-confirm-btn">
+              <button class="btn" type="submit">
+                <span>注文に進む</span>
+              </button>
+            </div>
+          </form>
         </th:block>
       </div>
       <!-- end container -->

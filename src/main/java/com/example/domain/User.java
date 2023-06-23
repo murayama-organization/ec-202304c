@@ -7,6 +7,23 @@ package com.example.domain;
  *
  */
 public class User {
+	public User() {
+	}
+
+	public User(Integer id, String name, String email, String password, String zipcode, String pref,
+			String municipalities, String address, String telephone) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.zipcode = zipcode;
+		this.pref = pref;
+		this.municipalities = municipalities;
+		this.address = address;
+		this.telephone = telephone;
+	}
+
 	/** id */
 	private Integer id;
 	/** 名前 */
