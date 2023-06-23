@@ -45,13 +45,14 @@ public class ShoppingCartController {
 		}
 		System.out.println("ACCCCC:" + accessId);
 		Order order = cartService.showShoppingCartContents(accessId);
-		if (order == null) {
+		System.out.println(order);
+		// 何も注文してない状態で遷移
+		if (order.getId() == null) {
 			model.addAttribute("noItemMessage", "カートに商品がありません");
 			return "ec/cart_list";
 		}
+		// 注文全削除状態で遷移
 		List<OrderItem> showShoppingCartContents = order.getOrderItemList();
-		System.out.println(showShoppingCartContents.size());
-		System.out.println(showShoppingCartContents);
 		if (showShoppingCartContents == null || showShoppingCartContents.size() == 0) {
 			model.addAttribute("noItemMessage", "カートに商品がありません");
 			return "ec/cart_list";

@@ -101,6 +101,12 @@ public class OrderRepository {
 		}
 	}
 
+	/**
+	 * UsrIdをupdateするリポジトリ.
+	 * 
+	 * @param sessionId
+	 * @param userId
+	 */
 	public void updateId(Integer sessionId, Integer userId) {
 		SqlParameterSource param = new MapSqlParameterSource().addValue("userId", userId).addValue("sessionId",
 				sessionId);
@@ -108,6 +114,12 @@ public class OrderRepository {
 		template.update(updateSql, param);
 	}
 
+	/**
+	 * Orderを追加するリポジトリ.
+	 * 
+	 * @param order
+	 * @return
+	 */
 	public Integer insert(Order order) {
 		SqlParameterSource param = new BeanPropertySqlParameterSource(order);
 
