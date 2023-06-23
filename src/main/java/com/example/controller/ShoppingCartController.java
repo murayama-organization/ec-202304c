@@ -43,7 +43,6 @@ public class ShoppingCartController {
 			accessId = user.getId();
 			cartService.updateUserId(accessId, httpSession.getId().hashCode());
 		}
-		System.out.println("ACCCCC:" + accessId);
 		Order order = cartService.showShoppingCartContents(accessId);
 		System.out.println(order);
 		// 何も注文してない状態で遷移
