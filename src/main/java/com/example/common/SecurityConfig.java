@@ -42,7 +42,7 @@ public class SecurityConfig {
 		http.authorizeHttpRequests(ahr -> ahr
 				.requestMatchers("/login-user/to-login", "/register-user/to-register", "/login-user/login-user",
 						"/register-user/register-user", "/show-item/show-item-list", "/shopping-cart/show-cart",
-						"/show-detail/show-item-detail")
+						"/show-detail/show-item-detail", "/show-top-page/top")
 				.permitAll() // 「/」などのパスは全てのユーザに許可
 				// .requestMatchers("/admin/**").hasRole("ADMIN")
 				// /admin/から始まるパスはADMIN権限でログインしている場合のみアクセス可(権限設定時の「ROLE_」を除いた文字列を指定)
