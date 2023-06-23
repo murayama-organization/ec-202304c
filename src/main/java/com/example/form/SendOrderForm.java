@@ -14,33 +14,44 @@ import jakarta.validation.constraints.Pattern;
 public class SendOrderForm {
 	/** 注文ID */
 	private Integer orderId;
+	/** 名前 */
+	@NotBlank(message = "名前を入力して下さい")
+	private String name;
 	/** Eメール */
-	@NotBlank(message = "メールアドレスは必須です")
+	@NotBlank(message = "メールアドレスを入力して下さい")
 	@Email(message = "メールアドレスの形式が不正です")
 	private String email;
 	/** 郵便番号 */
-	@NotBlank(message = "郵便番号は必須です")
+	@NotBlank(message = "郵便番号を入力して下さい")
 	@Pattern(regexp = "^[0-9]{3}-[0-9]{4}$", message = "郵便番号はXXX-XXXXの形式で入力してください")
 	private String zipcode;
 	/** 県 */
-	@NotBlank(message = "県は必須です")
+	@NotBlank(message = "県を入力して下さい")
 	private String pref;
 	/** 市町村 */
-	@NotBlank(message = "市町村は必須です")
+	@NotBlank(message = "市町村を入力して下さい")
 	private String municipalities;
 	/** 住所 */
-	@NotBlank(message = "住所は必須です")
+	@NotBlank(message = "住所を入力して下さい")
 	private String address;
 	/** 電話番号 */
-	@NotBlank(message = "電話番号は必須です")
+	@NotBlank(message = "電話番号を入力して下さい")
 	@Pattern(regexp = "^\\d{2,4}-\\d{2,4}-\\d{4}$", message = "電話番号はXXXX-XXXX-XXXXの形式で入力してください")
 	private String telephone;
 	/** 配達時間 */
-	@NotEmpty(message = "配達時間は必須です")
+	@NotEmpty(message = "配達日時を入力して下さい")
 	private String deliveryTime;
 	/** 支払方法 */
-	@NotEmpty(message = "支払方法は必須です")
+	@NotEmpty(message = "支払方法を入力して下さい")
 	private String paymentMethod;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public Integer getOrderId() {
 		return orderId;
@@ -116,9 +127,9 @@ public class SendOrderForm {
 
 	@Override
 	public String toString() {
-		return "SendOrderForm [orderId=" + orderId + ", email=" + email + ", zipcode=" + zipcode + ", pref=" + pref
-				+ ", municipalities=" + municipalities + ", address=" + address + ", telephone=" + telephone
-				+ ", deliveryTime=" + deliveryTime + ", paymentMethod=" + paymentMethod + "]";
+		return "SendOrderForm [orderId=" + orderId + ", name=" + name + ", email=" + email + ", zipcode=" + zipcode
+				+ ", pref=" + pref + ", municipalities=" + municipalities + ", address=" + address + ", telephone="
+				+ telephone + ", deliveryTime=" + deliveryTime + ", paymentMethod=" + paymentMethod + "]";
 	}
 
 }
