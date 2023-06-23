@@ -37,6 +37,11 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
     // CheckStyleプラグイン導入のため追加
     checkstyle 'com.puppycrawl.tools:checkstyle:9.1'
+    
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.apache.velocity:velocity:1.7'
+	compile('org.springframework.boot:spring-boot-starter-mail')
+	compile('org.apache.velocity:velocity:1.7')
 }
 
 tasks.named('test') {
