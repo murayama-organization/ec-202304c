@@ -26,10 +26,10 @@ public class ConfirmOrderService {
 
 	@Autowired
 	private OrderRepository orderRepository;
-	
+
 	@Autowired
 	private ItemRepository itemRepository;
-	
+
 	@Autowired
 	private ToppingRepository toppingRepository;
 
@@ -40,6 +40,7 @@ public class ConfirmOrderService {
 	 * @return 注文
 	 */
 	public Order showOrder(Integer orderId) {
+		System.out.println("orderId:" + orderId);
 		Order order = orderRepository.load(orderId);
 
 		List<OrderItem> cartContent = order.getOrderItemList();

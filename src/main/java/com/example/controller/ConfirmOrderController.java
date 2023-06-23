@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.Order;
+import com.example.domain.OrderItem;
 import com.example.service.ConfirmOrderService;
 
 /**
@@ -30,8 +31,16 @@ public class ConfirmOrderController {
 	@GetMapping("/to-confirm-order")
 	public String toConfirmOrder(Integer orderId, Model model) {
 		Order order = confirmOrderService.showOrder(orderId);
+		
+		System.out.println(order);
+		for(OrderItem orderItem : order.getOrderItemList()) {
+			System.out.println(orderItem);
+		}
 
 		model.addAttribute("order", order);
+		
+		model.addAttribute("totalTax", order.getTax());
+		model.addAttribute("totalPrice", order.getCalcPrice());
 
 		return "ec/order_confirm";
 
