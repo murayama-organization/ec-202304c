@@ -134,4 +134,31 @@ public class OrderRepository {
 		template.update(sb.toString(), param, keyHolder, keyColumnNames);
 		return keyHolder.getKey().intValue();
 	}
+
+	/**
+	 * 主キーから注文情報を取得するリポジトリ.
+	 * 
+	 * @param id 主キー
+	 * @return 注文リスト
+	 */
+	public List<Order> load(Integer id) {
+		String sql = "SELECT id,user_id,status,total_price,order_date,destination_name,destination_email,destination_zipcode,\r\n"
+				+ "destination_pref,destination_municipalities,destination_address,destination_tel,delivery_time,payment_method FROM orders WHERE id=:id;";
+
+		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
+		List<Order> orderList = template.query(sql, param, ORDER_RESULT_SET_EXTRACTOR);
+		return orderList;
+	}
+
+	/**
+	 * 注文状態を更新するレポジトリ.
+	 * 
+	 * @param order  注文情報
+	 * @param status 状態
+	 */
+	public void updateStatus(Order order, String status) {
+		String updateStatusSql = "UPDATE orders SET status=:status WHERE id=:id;";
+		SqlParameterSource param = new MapSqlParameterSource().addValue("id", order.getId()).addValue("status", status);
+		template.update(updateStatusSql, param);
+	}
 }
