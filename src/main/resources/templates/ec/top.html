@@ -21,9 +21,6 @@
         <p>ラクラクアロハは自宅にハワイアン料理がデリバリーで届くハワイアンECサイトです。</p>
         <div class="btn-wrapper">
           <a href="register_user.html" th:href="@{/register-user/to-register}" class="btn signup">会員登録</a>
-          <p>or</p>
-          <a href="#" class="btn facebook"><i class="fab fa-facebook"></i>Facebookで登録</a>
-          <a href="#" class="btn twitter"><i class="fab fa-twitter"></i>Twitterで登録</a>
         </div>
       </div>
     </div>
@@ -72,7 +69,9 @@
           <h2>さぁ、今すぐALOHAの旅に出よう！</h2>
           <h3>Let's go on an Aloha trip!</h3>
         </div>
-        <span class="btn message">ALOHAの旅に出る！</span>
+        <a href="" th:href="@{/show-item/show-item-list}">
+          <button type="button" class="btn message">ALOHAの旅に出る！</button>
+        </a>
       </div>
     </div>
 
