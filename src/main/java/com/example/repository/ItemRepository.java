@@ -57,11 +57,13 @@ public class ItemRepository {
 	 * 商品一覧情報から商品名であいまい検索をし、値段の安い順で取得します.
 	 * 
 	 * @param name 商品名
+	 * @param line 並び替え名
 	 * @return 商品一覧(商品が存在しない場合はサイズ0件の商品一覧を返します)
 	 */
-	public List<Item> searchByNameContaining(String name,String line) {
+	public List<Item> searchByNameContaining(String name, String line) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT id,name,description,price_m,price_l,image_path,deleted FROM items WHERE name LIKE :name ORDER BY ");
+		sql.append(
+				"SELECT id,name,description,price_m,price_l,image_path,deleted FROM items WHERE name LIKE :name ORDER BY ");
 		SqlParameterSource param = new MapSqlParameterSource().addValue("name", "%" + name + "%");
 		if ("low".equals(line)) {
 			sql.append("price_m ASC, id");
@@ -69,7 +71,7 @@ public class ItemRepository {
 			sql.append("price_m DESC ,id");
 		} else if ("initi".equals(line)) {
 			sql.append("name, id");
-		}else if(line==null) {
+		} else if (line == null) {
 			sql.append("name, id");
 		}
 		List<Item> itemList = template.query(sql.toString(), param, ITEM_ROW_MAPPER);
