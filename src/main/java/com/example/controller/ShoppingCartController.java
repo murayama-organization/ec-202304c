@@ -74,6 +74,8 @@ public class ShoppingCartController {
 		model.addAttribute("cartItem", showShoppingCartContents);
 		model.addAttribute("totalTax", order.getTax());
 		model.addAttribute("totalPrice", order.getCalcPrice());
+		//追加
+		model.addAttribute("order", order);
 		return "ec/cart_list";
 	}
 
