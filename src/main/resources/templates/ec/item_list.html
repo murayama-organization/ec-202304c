@@ -30,6 +30,7 @@
       <div class="container">
         <form method="get" class="search-form" action="item_list.html" th:action="@{/show-item/show-item-list}">
           <input list="item-name" type="text" name="name" class="search-name-input" th:value="${name}" />
+          <input type="hidden" name="line" th:value="${linename}">
           <datalist id="item-name">
             <option th:each="item:${itemList}" th:value="${item.name}"></option>
           </datalist>
@@ -41,6 +42,7 @@
 
         <div class="input-field col s12">
           <form class="change-line" action="item_list.html" th:action="@{/show-item/show-item-list}">
+          <input type="hidden" name="name" th:value="${name}">
             <select class="browser-default" id="price_line" name="line">
               <th:block th:each="line:${lineMap}">
                 <option th:if="${line.getKey().equals(linename)}" th:value="${line.getKey()}" th:text="${line.getValue()}" selected></option>

@@ -53,6 +53,7 @@ public class ShowItemListController {
 
 		model.addAttribute("itemList", itemList);
 		model.addAttribute("linename", line);
+		model.addAttribute("name", name);
 		return "ec/item_list";
 	}
 }
