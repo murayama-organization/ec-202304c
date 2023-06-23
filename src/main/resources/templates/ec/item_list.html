@@ -30,6 +30,7 @@
       <div class="container">
         <form method="get" class="search-form" action="item_list.html" th:action="@{/show-item/show-item-list}">
           <input list="item-name" type="text" name="name" class="search-name-input" th:value="${name}" />
+          <input type="hidden" name="line" th:value="${linename}">
           <datalist id="item-name">
             <option th:each="item:${itemList}" th:value="${item.name}"></option>
           </datalist>
