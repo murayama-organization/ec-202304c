@@ -66,7 +66,6 @@ public class ShoppingCartService {
 	public void addItemToShoppingCart(AddItemToShoppingCartForm form, Integer sessionOrUserId) {
 		// orderがない場合Orderを作る
 		Order order = orderRepository.findByUserIdAndStatus(sessionOrUserId, 0);
-		System.out.println("order:::::" + order);
 		Integer orderId = null;
 		if (order == null) {
 			order = new Order();
